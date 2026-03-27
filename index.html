@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Psic - Encontrá tu terapeuta ideal</title>
+    <title>Tu Psic - Encontrá tu psicólogo ideal</title>
     
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Libre Baskerville (Serif) & Inter (Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,25 +18,29 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#007bff',
-                        primaryDark: '#0056b3',
+                        brandGreen: '#76b39d',
+                        brandGreenDark: '#004d40',
+                        brandGreenLight: '#f0f7f4',
+                        brandBlue: '#2d5cf7',
+                        brandCoral: '#ff8a71',
+                        brandYellow: '#ffcc33',
                         textDark: '#2d3436',
-                        bgLight: '#ffffff',
-                        grayLight: '#f8f9fa'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        serif: ['Libre Baskerville', 'serif'],
                     },
                     borderRadius: {
                         'xl': '1rem',
                         '2xl': '1.5rem',
+                        '3xl': '2rem',
                     }
                 }
             }
         }
     </script>
 
-    <style>
+    <style type="text/tailwindcss">
         html {
             scroll-behavior: smooth;
         }
@@ -44,15 +48,18 @@
             color: #2d3436;
             background-color: #ffffff;
         }
+        .serif { font-family: 'Libre Baskerville', serif; }
+        
+        .btn-pill {
+            @apply px-8 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2;
+        }
+        .btn-primary {
+            @apply bg-brandGreen text-white hover:bg-[#65a18b] shadow-md hover:shadow-lg;
+        }
         .btn-outline {
-            border: 2px solid #007bff;
-            color: #007bff;
-            transition: all 0.3s ease;
+            @apply border-2 border-brandGreen text-brandGreen hover:bg-brandGreen hover:text-white;
         }
-        .btn-outline:hover {
-            background-color: #007bff;
-            color: white;
-        }
+        
         .form-container {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             max-height: 0;
@@ -60,90 +67,190 @@
             overflow: hidden;
         }
         .form-container.active {
-            max-height: 1000px;
+            max-height: 1200px;
             opacity: 1;
             padding-top: 2rem;
             padding-bottom: 2rem;
         }
-        .step-card {
-            transition: transform 0.3s ease;
+        
+        .card-help {
+            @apply rounded-3xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center;
         }
-        .step-card:hover {
-            transform: translateY(-5px);
+        
+        .step-number {
+            @apply text-8xl font-bold opacity-20 absolute right-4 top-4;
         }
-        input, select {
-            border: 1px solid #e2e8f0;
-            padding: 0.75rem 1rem;
-            border-radius: 0.75rem;
-            width: 100%;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        input:focus, select:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
-        }
-        .success-message {
-            display: none;
+
+        /* Custom Illustration Styles */
+        .illustration-bg {
+            background: radial-gradient(circle at center, rgba(118, 179, 157, 0.1) 0%, transparent 70%);
         }
     </style>
 </head>
 <body class="font-sans antialiased">
 
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+    <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">Ψ</div>
-                <span class="text-xl font-bold tracking-tight text-textDark">Tu Psic</span>
+            <div class="flex items-center gap-3">
+                <!-- Logo mimicking the couch/speech bubble -->
+                <div class="w-10 h-8 bg-brandGreen rounded-lg relative flex items-center justify-center">
+                    <div class="absolute -bottom-1 left-2 w-3 h-3 bg-brandGreen rotate-45"></div>
+                    <div class="flex gap-1">
+                        <div class="w-1 h-1 bg-white rounded-full"></div>
+                        <div class="w-1 h-1 bg-white rounded-full"></div>
+                    </div>
+                </div>
+                <span class="text-2xl font-bold tracking-tight text-brandGreen">Tu<span class="text-brandGreenDark">Psic</span></span>
             </div>
-            <nav class="hidden md:flex items-center gap-8">
-                <button onclick="showForm('patient')" class="text-sm font-medium hover:text-primary transition-colors">Buscar Terapeuta</button>
-                <button onclick="showForm('psychologist')" class="btn-outline px-5 py-2 rounded-full text-sm font-semibold">Soy Psicólogo</button>
-            </nav>
-            <!-- Mobile Menu Toggle (Simple) -->
-            <button class="md:hidden text-textDark">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16" />
-                </svg>
-            </button>
+            
+            <div class="flex items-center gap-6">
+                <button onclick="showForm('patient')" class="hidden md:block text-sm font-semibold text-brandGreenDark hover:text-brandGreen transition-colors">Buscar Terapeuta</button>
+                <button onclick="showForm('psychologist')" class="hidden md:block text-sm font-semibold px-5 py-2 rounded-full border-2 border-brandGreen text-brandGreen hover:bg-brandGreen hover:text-white transition-all">Soy Psicólogo</button>
+                <button onclick="toggleMobileMenu()" class="text-brandGreenDark md:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
+            <button onclick="showForm('patient'); toggleMobileMenu();" class="block w-full text-left text-sm font-semibold text-brandGreenDark">Buscar Terapeuta</button>
+            <button onclick="showForm('psychologist'); toggleMobileMenu();" class="block w-full text-left text-sm font-semibold text-brandGreen">Soy Psicólogo</button>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 md:pt-48 md:pb-32 bg-white overflow-hidden">
-        <div class="container mx-auto px-6 text-center max-w-4xl">
-            <h1 class="text-4xl md:text-6xl font-bold text-textDark leading-tight mb-6">
-                Encontrá al profesional <br class="hidden md:block"> ideal para tu terapia
-            </h1>
-            <p class="text-lg md:text-xl text-gray-500 mb-10 leading-relaxed max-w-2xl mx-auto">
-                Te conectamos con psicólogos matriculados que se ajustan a tu presupuesto, horarios y necesidades.
-            </p>
-            <button onclick="showForm('patient')" class="bg-primary text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-primaryDark transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                Iniciar búsqueda de orientación
-            </button>
+    <section class="pt-32 pb-20 md:pt-48 md:pb-32 bg-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="text-left">
+                <h1 class="serif text-5xl md:text-7xl font-bold text-brandGreenDark leading-tight mb-8">
+                    Quiero encontrar <br> <span class="text-brandGreen">mi potencial</span>
+                </h1>
+                <button onclick="showForm('patient')" class="btn-pill btn-primary text-lg group">
+                    Quiero Probarlo
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative flex justify-center items-center illustration-bg">
+                <!-- Modern Flat Illustration: Growth & Calm -->
+                <svg viewBox="0 0 400 400" class="w-full max-w-md h-auto drop-shadow-2xl">
+                    <!-- Background shapes -->
+                    <circle cx="200" cy="200" r="160" fill="#f0f7f4" />
+                    <path d="M100 300 Q200 250 300 300 L300 400 L100 400 Z" fill="#76b39d" opacity="0.1" />
+                    
+                    <!-- Character sitting on a large leaf/shape -->
+                    <path d="M120 320 Q200 280 280 320 Q240 360 160 360 Z" fill="#76b39d" /> <!-- Couch/Leaf -->
+                    
+                    <!-- Person -->
+                    <circle cx="200" cy="140" r="35" fill="#fbc4ab" /> <!-- Head -->
+                    <path d="M170 175 Q200 165 230 175 L245 280 Q200 290 155 280 Z" fill="#2d3436" /> <!-- Torso -->
+                    <path d="M155 280 L120 340 Q140 350 160 340 L180 280 Z" fill="#2d5cf7" /> <!-- Leg L -->
+                    <path d="M245 280 L280 340 Q260 350 240 340 L220 280 Z" fill="#2d5cf7" /> <!-- Leg R -->
+                    
+                    <!-- Abstract Growth Elements -->
+                    <path d="M300 150 Q330 100 360 150 Z" fill="#ffcc33" opacity="0.6" />
+                    <path d="M50 200 Q80 150 110 200 Z" fill="#ff8a71" opacity="0.6" />
+                    <circle cx="320" cy="250" r="15" fill="#2d5cf7" opacity="0.3" />
+                    
+                    <!-- Floating leaves -->
+                    <path d="M80 100 Q100 80 120 100 Q100 120 80 100" fill="#76b39d" opacity="0.4" />
+                    <path d="M280 80 Q300 60 320 80 Q300 100 280 80" fill="#76b39d" opacity="0.4" />
+                </svg>
+                <!-- Floating element -->
+                <div class="absolute top-10 right-10 w-12 h-12 bg-brandYellow rounded-full opacity-60 animate-pulse"></div>
+            </div>
         </div>
     </section>
 
-    <!-- Dual-Purpose Section (Forms) -->
-    <section id="forms-section" class="bg-grayLight py-10">
+    <!-- Help Section -->
+    <section class="py-20 bg-brandGreen">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="serif text-4xl md:text-5xl text-white font-bold mb-6">¿Cómo te podemos ayudar?</h2>
+            <p class="text-white/90 text-lg max-w-3xl mx-auto mb-16 leading-relaxed">
+                Todos atravesamos momentos difíciles, desde inseguridades personales hasta problemas en nuestras relaciones. Te invitamos a que empieces a transformar tu vida.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="card-help bg-white group cursor-pointer">
+                    <div class="w-full h-48 bg-brandGreenLight rounded-2xl mb-6 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
+                        <!-- Illustration: Mood -->
+                        <svg viewBox="0 0 100 100" class="w-32 h-32">
+                            <circle cx="50" cy="50" r="40" fill="#fff9c4" opacity="0.3" />
+                            <path d="M30 70 Q50 40 70 70" stroke="#ffcc33" stroke-width="4" fill="none" stroke-linecap="round" />
+                            <circle cx="50" cy="45" r="12" fill="#fbc4ab" />
+                            <path d="M40 65 Q50 75 60 65" stroke="#2d3436" stroke-width="2" fill="none" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-brandGreenDark">Ánimo</h3>
+                </div>
+                <!-- Card 2 -->
+                <div class="card-help bg-white group cursor-pointer">
+                    <div class="w-full h-48 bg-brandGreenLight rounded-2xl mb-6 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
+                        <!-- Illustration: Fears -->
+                        <svg viewBox="0 0 100 100" class="w-32 h-32">
+                            <circle cx="50" cy="50" r="40" fill="#e3f2fd" opacity="0.3" />
+                            <path d="M20 80 L40 60 M80 20 L60 40" stroke="#2d5cf7" stroke-width="2" opacity="0.4" />
+                            <circle cx="50" cy="45" r="12" fill="#fbc4ab" />
+                            <path d="M45 42 L47 42 M53 42 L55 42" stroke="#2d3436" stroke-width="2" />
+                            <path d="M45 55 Q50 50 55 55" stroke="#2d3436" stroke-width="2" fill="none" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-brandGreenDark">Miedos</h3>
+                </div>
+                <!-- Card 3 -->
+                <div class="card-help bg-white group cursor-pointer">
+                    <div class="w-full h-48 bg-brandGreenLight rounded-2xl mb-6 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
+                        <!-- Illustration: Relationships -->
+                        <svg viewBox="0 0 100 100" class="w-32 h-32">
+                            <circle cx="50" cy="50" r="40" fill="#f1f8e9" opacity="0.3" />
+                            <circle cx="35" cy="45" r="10" fill="#fbc4ab" />
+                            <circle cx="65" cy="45" r="10" fill="#fbc4ab" />
+                            <path d="M35 65 Q50 75 65 65" stroke="#76b39d" stroke-width="3" fill="none" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-brandGreenDark">Relaciones</h3>
+                </div>
+                <!-- Card 4 -->
+                <div class="card-help bg-white group cursor-pointer">
+                    <div class="w-full h-48 bg-brandGreenLight rounded-2xl mb-6 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
+                        <!-- Illustration: Stress -->
+                        <svg viewBox="0 0 100 100" class="w-32 h-32">
+                            <circle cx="50" cy="50" r="40" fill="#fff3e0" opacity="0.3" />
+                            <path d="M20 30 Q50 10 80 30" stroke="#ff8a71" stroke-width="2" fill="none" stroke-dasharray="4 4" />
+                            <circle cx="50" cy="50" r="12" fill="#fbc4ab" />
+                            <path d="M45 55 L55 55" stroke="#2d3436" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-brandGreenDark">Estrés</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forms Section (Hidden by default) -->
+    <section id="forms-section" class="bg-brandGreenLight py-10">
         <div class="container mx-auto px-6">
             
             <!-- Patient Form -->
-            <div id="patient-form-container" class="form-container max-w-2xl mx-auto bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12">
+            <div id="patient-form-container" class="form-container max-w-2xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
                 <div id="patient-fields">
-                    <h2 class="text-2xl font-bold mb-2">Búsqueda de Terapeuta</h2>
+                    <h2 class="serif text-3xl font-bold text-brandGreenDark mb-2">Búsqueda de Terapeuta</h2>
                     <p class="text-gray-500 mb-8">Completá tus preferencias para que podamos ayudarte.</p>
                     
                     <form onsubmit="handleSubmit(event, 'patient')" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Nombre</label>
-                                <input type="text" placeholder="Tu nombre" required>
+                                <input type="text" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Motivo de consulta</label>
-                                <select required>
+                                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
                                     <option value="">Seleccionar...</option>
                                     <option value="ansiedad">Ansiedad</option>
                                     <option value="pareja">Terapia de Pareja</option>
@@ -156,73 +263,112 @@
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold mb-2">Presupuesto máximo (por sesión)</label>
-                                <input type="number" placeholder="$ Valor máximo" required>
+                                <label class="block text-sm font-semibold mb-2">Email</label>
+                                <input type="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Teléfono</label>
+                                <input type="tel" placeholder="Cod. área + número" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Presupuesto máximo</label>
+                                <input type="number" placeholder="$ Valor máximo" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Modalidad</label>
-                                <select required>
+                                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
                                     <option value="online">Online</option>
                                     <option value="presencial">Presencial</option>
                                     <option value="ambas">Ambas</option>
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-primaryDark transition-all">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Ubicación / Barrio / Localidad (Si buscás presencial)</label>
+                            <input type="text" placeholder="Ej: Palermo, CABA / Rosario, Santa Fe" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all">
+                        </div>
+                        <button type="submit" class="w-full btn-pill btn-primary text-lg">
                             Enviar solicitud de búsqueda
                         </button>
                     </form>
                 </div>
-                <div id="patient-success" class="success-message text-center py-10">
-                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div id="patient-success" class="hidden text-center py-10">
+                    <div class="w-20 h-20 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">¡Solicitud enviada!</h3>
+                    <h3 class="serif text-3xl font-bold text-brandGreenDark mb-2">¡Solicitud enviada!</h3>
                     <p class="text-gray-500">Estamos procesando tu solicitud. Te contactaremos por email en breve.</p>
                 </div>
             </div>
 
             <!-- Psychologist Form -->
-            <div id="psychologist-form-container" class="form-container max-w-2xl mx-auto bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12">
+            <div id="psychologist-form-container" class="form-container max-w-2xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
                 <div id="psychologist-fields">
-                    <h2 class="text-2xl font-bold mb-2">Registro de Profesional</h2>
+                    <h2 class="serif text-3xl font-bold text-brandGreenDark mb-2">Registro de Profesional</h2>
                     <p class="text-gray-500 mb-8">Unite a nuestra red de psicólogos matriculados.</p>
                     
                     <form onsubmit="handleSubmit(event, 'psychologist')" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Nombre completo</label>
-                                <input type="text" placeholder="Como figura en tu título" required>
+                                <input type="text" placeholder="Como figura en tu título" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Matrícula Profesional</label>
-                                <input type="text" placeholder="N° de Matrícula" required>
+                                <input type="text" placeholder="N° de Matrícula" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold mb-2">Especialidad principal</label>
-                                <input type="text" placeholder="Ej: TCC, Psicoanálisis..." required>
+                                <label class="block text-sm font-semibold mb-2">Especialidad</label>
+                                <input type="text" placeholder="Ej: TCC, Psicoanálisis..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Valor de la sesión</label>
-                                <input type="number" placeholder="$ Valor promedio" required>
+                                <input type="number" placeholder="$ Valor promedio" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                         </div>
-                        <button type="submit" class="w-full btn-outline py-4 rounded-xl font-bold text-lg">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Email de contacto</label>
+                                <input type="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Teléfono / WhatsApp</label>
+                                <input type="tel" placeholder="Cod. área + número" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Modalidad de atención</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
+                                    <option value="" disabled selected>Seleccioná una opción</option>
+                                    <option value="online">Online</option>
+                                    <option value="presencial">Presencial</option>
+                                    <option value="ambos">Ambos (Online y Presencial)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Ubicación / Barrio / Localidad</label>
+                                <input type="text" placeholder="Ej: Palermo, CABA / Rosario, Santa Fe" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full btn-pill btn-outline text-lg">
                             Registrarme como profesional
                         </button>
                     </form>
                 </div>
-                <div id="psychologist-success" class="success-message text-center py-10">
-                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div id="psychologist-success" class="hidden text-center py-10">
+                    <div class="w-20 h-20 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">¡Registro recibido!</h3>
+                    <h3 class="serif text-3xl font-bold text-brandGreenDark mb-2">¡Registro recibido!</h3>
                     <p class="text-gray-500">Estamos procesando tu solicitud. Te contactaremos por email en breve.</p>
                 </div>
             </div>
@@ -231,75 +377,145 @@
     </section>
 
     <!-- Steps Section -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-brandGreenDark overflow-hidden relative">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-16">¿Cómo funciona Tu Psic?</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 <!-- Step 1 -->
-                <div class="step-card text-center p-8 rounded-3xl bg-grayLight">
-                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                <div class="bg-brandYellow rounded-3xl p-10 relative min-h-[400px] flex flex-col justify-between">
+                    <span class="step-number text-brandGreenDark">1</span>
+                    <div>
+                        <p class="text-brandBlue font-bold tracking-widest uppercase text-sm mb-4">Primer Paso</p>
+                        <h3 class="serif text-3xl font-bold text-brandGreenDark mb-6 leading-tight">Registrate y elegí <br> tu terapeuta</h3>
+                    </div>
+                    <div class="flex justify-center">
+                        <!-- Illustration: Modern Device Drawing -->
+                        <svg viewBox="0 0 200 120" class="w-64 h-auto drop-shadow-lg">
+                            <rect x="20" y="20" width="110" height="75" rx="8" fill="#2d3436" />
+                            <rect x="28" y="28" width="94" height="50" fill="#ffffff" />
+                            <circle cx="75" cy="85" r="3" fill="#ffffff" opacity="0.5" />
+                            
+                            <rect x="140" y="40" width="35" height="70" rx="6" fill="#2d3436" />
+                            <rect x="145" y="48" width="25" height="50" fill="#ffffff" />
+                            <circle cx="157.5" cy="103" r="2" fill="#ffffff" opacity="0.5" />
+                            
+                            <!-- Small abstract shapes -->
+                            <circle cx="180" cy="30" r="10" fill="#2d5cf7" opacity="0.4" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">1. Completás tus datos</h3>
-                    <p class="text-gray-500 leading-relaxed">Contanos qué buscás o cuáles son tus especialidades en un breve formulario.</p>
                 </div>
-
                 <!-- Step 2 -->
-                <div class="step-card text-center p-8 rounded-3xl bg-grayLight">
-                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                <div class="bg-brandCoral rounded-3xl p-10 relative min-h-[400px] flex flex-col justify-between">
+                    <span class="step-number text-brandGreenDark">2</span>
+                    <div>
+                        <p class="text-brandBlue font-bold tracking-widest uppercase text-sm mb-4">Segundo Paso</p>
+                        <h3 class="serif text-3xl font-bold text-white mb-6 leading-tight">Coordiná y llevá a <br> cabo tus consultas</h3>
+                    </div>
+                    <div class="flex justify-center">
+                        <!-- Illustration: Modern Video Call Drawing -->
+                        <svg viewBox="0 0 200 120" class="w-64 h-auto drop-shadow-lg">
+                            <rect x="40" y="10" width="120" height="90" rx="15" fill="white" opacity="0.2" />
+                            <!-- Person 1 -->
+                            <circle cx="75" cy="50" r="18" fill="#fbc4ab" />
+                            <path d="M55 85 Q75 75 95 85 L90 100 L60 100 Z" fill="#2d3436" opacity="0.8" />
+                            <!-- Person 2 -->
+                            <circle cx="125" cy="50" r="18" fill="#fbc4ab" />
+                            <path d="M105 85 Q125 75 145 85 L140 100 L110 100 Z" fill="#76b39d" opacity="0.8" />
+                            <!-- Connection line -->
+                            <path d="M90 50 L110 50" stroke="white" stroke-width="2" stroke-dasharray="4 2" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">2. Validamos el profesional</h3>
-                    <p class="text-gray-500 leading-relaxed">Nuestro equipo analiza las opciones para asegurar el mejor "match" terapéutico.</p>
                 </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button onclick="showForm('patient')" class="btn-pill btn-primary mx-auto text-lg group">
+                    Quiero Probarlo
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
 
-                <!-- Step 3 -->
-                <div class="step-card text-center p-8 rounded-3xl bg-grayLight">
-                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">3. Agendás tu sesión</h3>
-                    <p class="text-gray-500 leading-relaxed">Te enviamos el contacto directo para que coordines tu primera entrevista.</p>
+    <!-- Pricing Section -->
+    <section class="py-24 bg-brandBlue relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 to-transparent pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 text-center text-white relative z-10">
+            <h2 class="serif text-4xl md:text-5xl font-bold mb-12">Elige la terapia que <br> te sea más cómoda</h2>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-8 mb-16">
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 flex-1 max-w-sm mx-auto md:mx-0">
+                    <span class="bg-brandBlue text-white px-4 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block">Online</span>
+                    <div class="text-4xl font-bold mb-2">ARS 31000</div>
+                    <p class="text-white/70 text-sm">Por sesión</p>
                 </div>
-
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 flex-1 max-w-sm mx-auto md:mx-0">
+                    <span class="bg-brandCoral text-white px-4 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block">Presencial</span>
+                    <div class="text-4xl font-bold mb-2">ARS 36000</div>
+                    <p class="text-white/70 text-sm">Por sesión</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-center gap-3 text-white/80 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Podés cambiar la modalidad de tu sesión cuando gustes.
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-100 py-12">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <div class="w-6 h-6 bg-primary rounded flex items-center justify-center text-white font-bold text-xs">Ψ</div>
-                <span class="font-bold text-textDark">Tu Psic</span>
-            </div>
-            <p class="text-sm text-gray-400">© 2026 Tu Psic. Todos los derechos reservados.</p>
-            <div class="flex gap-6">
-                <a href="#" class="text-sm text-gray-400 hover:text-primary transition-colors">Términos</a>
-                <a href="#" class="text-sm text-gray-400 hover:text-primary transition-colors">Privacidad</a>
+    <footer class="bg-brandGreenDark text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center text-center">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-8 bg-brandGreen rounded-lg relative flex items-center justify-center">
+                        <div class="absolute -bottom-1 left-2 w-3 h-3 bg-brandGreen rotate-45"></div>
+                        <div class="flex gap-1">
+                            <div class="w-1 h-1 bg-white rounded-full"></div>
+                            <div class="w-1 h-1 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tight text-brandGreen">Tu<span class="text-white">Psic</span></span>
+                </div>
+                
+                <div class="flex gap-6 mb-12">
+                    <a href="#" class="hover:text-brandGreen transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.337 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.351-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    <a href="#" class="hover:text-brandGreen transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="#" class="hover:text-brandGreen transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                </div>
+                
+                <p class="text-sm text-white/50 mb-4">info@tupsic.com.ar</p>
+                <a href="#" class="text-sm text-white/50 hover:text-white transition-colors underline underline-offset-4">Términos y Condiciones</a>
+                
+                <div class="mt-12 pt-8 border-t border-white/10 w-full text-xs text-white/30">
+                    © 2026 Tu Psic. Todos los derechos reservados.
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
         function showForm(type) {
             const patientContainer = document.getElementById('patient-form-container');
             const psychologistContainer = document.getElementById('psychologist-form-container');
             const formsSection = document.getElementById('forms-section');
 
-            // Reset success messages if showing again
+            // Reset success messages
             document.getElementById('patient-fields').style.display = 'block';
-            document.getElementById('patient-success').style.display = 'none';
+            document.getElementById('patient-success').classList.add('hidden');
             document.getElementById('psychologist-fields').style.display = 'block';
-            document.getElementById('psychologist-success').style.display = 'none';
+            document.getElementById('psychologist-success').classList.add('hidden');
 
             if (type === 'patient') {
                 psychologistContainer.classList.remove('active');
@@ -309,7 +525,7 @@
                 psychologistContainer.classList.add('active');
             }
 
-            // Smooth scroll to section
+            // Smooth scroll
             formsSection.scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -319,14 +535,8 @@
             const fieldsId = type === 'patient' ? 'patient-fields' : 'psychologist-fields';
             const successId = type === 'patient' ? 'patient-success' : 'psychologist-success';
 
-            // Hide fields and show success message
             document.getElementById(fieldsId).style.display = 'none';
-            const successEl = document.getElementById(successId);
-            successEl.style.display = 'block';
-            
-            // Simple animation for success message
-            successEl.classList.add('animate-pulse');
-            setTimeout(() => successEl.classList.remove('animate-pulse'), 1000);
+            document.getElementById(successId).classList.remove('hidden');
         }
     </script>
 
