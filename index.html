@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Psic - Encontrá tu psicólogo ideal</title>
+    <title>Tu Psic - Encontrá tu especialista ideal</title>
     
     <!-- Google Fonts: Libre Baskerville (Serif) & Inter (Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,7 +106,7 @@
             
             <div class="flex items-center gap-6">
                 <button onclick="showForm('patient')" class="hidden md:block text-sm font-semibold text-brandGreenDark hover:text-brandGreen transition-colors">Buscar Terapeuta</button>
-                <button onclick="showForm('psychologist')" class="hidden md:block text-sm font-semibold px-5 py-2 rounded-full border-2 border-brandGreen text-brandGreen hover:bg-brandGreen hover:text-white transition-all">Soy Psicólogo</button>
+                <button onclick="showForm('psychologist')" class="hidden md:block text-sm font-semibold px-5 py-2 rounded-full border-2 border-brandGreen text-brandGreen hover:bg-brandGreen hover:text-white transition-all">Soy Especialista</button>
                 <button onclick="toggleMobileMenu()" class="text-brandGreenDark md:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16" />
@@ -117,7 +117,7 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
             <button onclick="showForm('patient'); toggleMobileMenu();" class="block w-full text-left text-sm font-semibold text-brandGreenDark">Buscar Terapeuta</button>
-            <button onclick="showForm('psychologist'); toggleMobileMenu();" class="block w-full text-left text-sm font-semibold text-brandGreen">Soy Psicólogo</button>
+            <button onclick="showForm('psychologist'); toggleMobileMenu();" class="block w-full text-left text-sm font-semibold text-brandGreen">Soy Especialista</button>
         </div>
     </header>
 
@@ -309,7 +309,7 @@
             <div id="psychologist-form-container" class="form-container max-w-2xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
                 <div id="psychologist-fields">
                     <h2 class="serif text-3xl font-bold text-brandGreenDark mb-2">Registro de Profesional</h2>
-                    <p class="text-gray-500 mb-8">Unite a nuestra red de psicólogos matriculados.</p>
+                    <p class="text-gray-500 mb-8">Unite a nuestra red de especialistas matriculados.</p>
                     
                     <form onsubmit="handleSubmit(event, 'psychologist')" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
