@@ -238,11 +238,11 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Nombre</label>
-                                <input type="text" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="text" name="nombre" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Motivo de consulta</label>
-                                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
+                                <select name="motivo" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
                                     <option value="">Seleccionar...</option>
                                     <option value="ansiedad">Ansiedad</option>
                                     <option value="pareja">Terapia de Pareja</option>
@@ -256,21 +256,21 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Email</label>
-                                <input type="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="email" name="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Teléfono</label>
-                                <input type="tel" placeholder="Cod. área + número" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="tel" name="telefono" placeholder="Cod. área + número" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Presupuesto máximo</label>
-                                <input type="number" placeholder="$ Valor máximo" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="number" name="presupuesto" placeholder="$ Valor máximo" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Modalidad</label>
-                                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
+                                <select name="modalidad" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
                                     <option value="online">Online</option>
                                     <option value="presencial">Presencial</option>
                                     <option value="ambas">Ambas</option>
@@ -279,10 +279,11 @@
                         </div>
                         <div>
                             <label class="block text-sm font-semibold mb-2">Ubicación / Barrio / Localidad (Si buscás presencial)</label>
-                            <input type="text" placeholder="Ej: Palermo, CABA / Rosario, Santa Fe" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all">
+                            <input type="text" name="ubicacion" placeholder="Ej: Palermo, CABA / Rosario, Santa Fe" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all">
                         </div>
-                        <button type="submit" class="w-full btn-pill btn-primary text-lg">
-                            Enviar solicitud de búsqueda
+                        <button type="submit" class="w-full btn-pill btn-primary text-lg disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span class="submit-text">Enviar solicitud de búsqueda</span>
+                            <span class="loading-spinner hidden">Enviando...</span>
                         </button>
                     </form>
                 </div>
@@ -302,42 +303,41 @@
                 <div id="psychologist-fields">
                     <h2 class="serif text-3xl font-bold text-brandGreenDark mb-2">Registro de Profesional</h2>
                     <p class="text-gray-500 mb-8">Unite a nuestra red de especialistas matriculados.</p>
-                    
                     <form onsubmit="handleSubmit(event, 'psychologist')" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Nombre completo</label>
-                                <input type="text" placeholder="Como figura en tu título" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="text" name="nombre" placeholder="Como figura en tu título" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Matrícula Profesional</label>
-                                <input type="text" placeholder="N° de Matrícula" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="text" name="matricula" placeholder="N° de Matrícula" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Especialidad</label>
-                                <input type="text" placeholder="Ej: TCC, Psicoanálisis..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="text" name="especialidad" placeholder="Ej: TCC, Psicoanálisis..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Valor de la sesión</label>
-                                <input type="number" placeholder="$ Valor promedio" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="number" name="valor" placeholder="$ Valor promedio" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Email de contacto</label>
-                                <input type="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="email" name="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Teléfono / WhatsApp</label>
-                                <input type="tel" placeholder="Cod. área + número" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="tel" name="telefono" placeholder="Cod. área + número" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Modalidad de atención</label>
-                                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
+                                <select name="modalidad" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
                                     <option value="" disabled selected>Seleccioná una opción</option>
                                     <option value="online">Online</option>
                                     <option value="presencial">Presencial</option>
@@ -346,11 +346,12 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold mb-2">Ubicación / Barrio / Localidad</label>
-                                <input type="text" placeholder="Ej: Palermo, CABA / Rosario, Santa Fe" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
+                                <input type="text" name="ubicacion" placeholder="Ej: Palermo, CABA / Rosario, Santa Fe" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
                             </div>
                         </div>
-                        <button type="submit" class="w-full btn-pill btn-outline text-lg">
-                            Registrarme como profesional
+                        <button type="submit" class="w-full btn-pill btn-outline text-lg disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span class="submit-text">Registrarme como profesional</span>
+                            <span class="loading-spinner hidden">Enviando...</span>
                         </button>
                     </form>
                 </div>
@@ -457,6 +458,9 @@
 
     <!-- JavaScript -->
     <script>
+        // REEMPLAZA ESTA URL con la de tu Google Apps Script implementado
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz_XXXXXXXXX/exec';
+
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
@@ -485,14 +489,45 @@
             formsSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function handleSubmit(event, type) {
+        async function handleSubmit(event, type) {
             event.preventDefault();
-            
-            const fieldsId = type === 'patient' ? 'patient-fields' : 'psychologist-fields';
-            const successId = type === 'patient' ? 'patient-success' : 'psychologist-success';
+            const form = event.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const submitText = btn.querySelector('.submit-text');
+            const loadingSpinner = btn.querySelector('.loading-spinner');
 
-            document.getElementById(fieldsId).style.display = 'none';
-            document.getElementById(successId).classList.remove('hidden');
+            // UI Feedback
+            btn.disabled = true;
+            submitText.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+
+            const formData = new FormData(form);
+            // Agregamos el nombre de la hoja según el tipo
+            formData.append('sheetName', type === 'patient' ? 'pacientes' : 'especialistas');
+
+            try {
+                // Enviamos los datos al script de Google
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // Necesario para Google Apps Script
+                });
+
+                // Mostrar éxito
+                const fieldsId = type === 'patient' ? 'patient-fields' : 'psychologist-fields';
+                const successId = type === 'patient' ? 'patient-success' : 'psychologist-success';
+
+                document.getElementById(fieldsId).style.display = 'none';
+                document.getElementById(successId).classList.remove('hidden');
+                form.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+            } finally {
+                btn.disabled = false;
+                submitText.classList.remove('hidden');
+                loadingSpinner.classList.add('hidden');
+            }
         }
     </script>
 
