@@ -95,6 +95,10 @@
             </a>
             
             <div class="flex items-center gap-6">
+                <nav class="hidden md:flex items-center gap-8 mr-4">
+                    <a href="#quienes-somos" class="text-sm font-medium hover:text-brandGreen transition-colors">Quiénes Somos</a>
+                    <a href="#como-funciona" class="text-sm font-medium hover:text-brandGreen transition-colors">Cómo Funciona</a>
+                </nav>
                 <button onclick="showForm('patient')" class="hidden md:block text-sm font-semibold text-brandGreenDark hover:text-brandGreen transition-colors">Buscar Terapeuta</button>
                 <button onclick="showForm('psychologist')" class="hidden md:block text-sm font-semibold px-5 py-2 rounded-full border-2 border-brandGreen text-brandGreen hover:bg-brandGreen hover:text-white transition-all">Soy Especialista</button>
                 <button onclick="toggleMobileMenu()" class="text-brandGreenDark md:hidden">
@@ -106,6 +110,8 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
+            <a href="#quienes-somos" onclick="toggleMobileMenu()" class="block w-full text-left text-sm font-semibold text-brandGreenDark">Quiénes Somos</a>
+            <a href="#como-funciona" onclick="toggleMobileMenu()" class="block w-full text-left text-sm font-semibold text-brandGreenDark">Cómo Funciona</a>
             <button onclick="showForm('patient'); toggleMobileMenu();" class="block w-full text-left text-sm font-semibold text-brandGreenDark">Buscar Terapeuta</button>
             <button onclick="showForm('psychologist'); toggleMobileMenu();" class="block w-full text-left text-sm font-semibold text-brandGreen">Soy Especialista</button>
         </div>
@@ -362,51 +368,103 @@
         </div>
     </section>
 
-    <!-- Steps Section -->
-    <section class="py-24 bg-brandGreenDark overflow-hidden relative">
+    <!-- Who We Are Section -->
+    <section id="quienes-somos" class="py-20 bg-brandGreenLight">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- Step 1 -->
-                <div class="bg-brandYellow rounded-3xl p-10 relative min-h-[400px] flex flex-col justify-between">
-                    <span class="step-number text-brandGreenDark">1</span>
-                    <div>
-                        <p class="text-brandBlue font-bold tracking-widest uppercase text-sm mb-4">Primer Paso</p>
-                        <h3 class="serif text-3xl font-bold text-brandGreenDark mb-6 leading-tight">Completa el formulario <br> de solicitud</h3>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-brandGreen text-sm font-bold mb-6 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        <span>El Factor Humano</span>
                     </div>
-                    <div class="flex justify-center">
-                        <!-- Illustration: Modern Device Drawing -->
-                        <svg viewBox="0 0 200 120" class="w-64 h-auto drop-shadow-lg">
+                    <h2 class="serif text-3xl md:text-5xl font-bold text-brandGreenDark mb-6 leading-tight">
+                        Más que un algoritmo, somos <span class="text-brandGreen">personas cuidando personas</span>.
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed max-w-xl">
+                        Somos un equipo apasionado por la tecnología y la salud mental que busca humanizar el proceso de búsqueda terapéutica.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed max-w-xl">
+                        Nacimos para resolver la "lotería" de los directorios tradicionales. No te damos una lista interminable; hacemos una curaduría real para asegurar que cada paciente llegue al profesional idóneo según su especialidad, enfoque y disponibilidad real.
+                    </p>
+                    <div class="flex items-center gap-4 p-5 bg-white rounded-2xl shadow-sm border border-blue-50 max-w-md">
+                        <div class="w-12 h-12 bg-brandGreenLight rounded-full flex items-center justify-center text-brandGreen">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm text-brandGreenDark">Curaduría Activa</p>
+                            <p class="text-xs text-gray-500">Validamos cada perfil manualmente antes de sumarlo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                    <img src="https://picsum.photos/seed/team1/400/500" alt="Equipo Tu Psic" class="rounded-2xl shadow-lg mt-8" referrerPolicy="no-referrer">
+                    <img src="https://picsum.photos/seed/team2/400/500" alt="Trabajo en equipo" class="rounded-2xl shadow-lg" referrerPolicy="no-referrer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section id="como-funciona" class="py-24 bg-brandGreenDark overflow-hidden relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="serif text-4xl md:text-5xl text-white font-bold mb-6">Claridad en el proceso</h2>
+                <p class="text-white/80 text-lg leading-relaxed">Tu camino al bienestar en 3 pasos simples y transparentes, diseñados para que encuentres ayuda sin complicaciones.</p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8 md:gap-12 items-stretch">
+                <!-- Step 1 -->
+                <div class="bg-brandYellow rounded-[2.5rem] p-8 md:p-12 relative flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 shadow-xl">
+                    <span class="step-number text-brandGreenDark select-none">1</span>
+                    <div class="relative z-10">
+                        <p class="text-brandBlue font-bold tracking-widest uppercase text-xs mb-4">Primer Paso</p>
+                        <h3 class="serif text-3xl font-bold text-brandGreenDark mb-6 leading-tight">Completás el <br>formulario</h3>
+                        <p class="text-brandGreenDark/80 text-sm leading-relaxed mb-8">Nos contás qué buscás, tus motivos de consulta y tus baches horarios para que el match sea perfecto.</p>
+                    </div>
+                    <div class="flex justify-center mt-auto">
+                        <svg viewBox="0 0 200 120" class="w-44 h-auto drop-shadow-xl">
                             <rect x="20" y="20" width="110" height="75" rx="8" fill="#2d3436" />
                             <rect x="28" y="28" width="94" height="50" fill="#ffffff" />
                             <circle cx="75" cy="85" r="3" fill="#ffffff" opacity="0.5" />
-                            
                             <rect x="140" y="40" width="35" height="70" rx="6" fill="#2d3436" />
                             <rect x="145" y="48" width="25" height="50" fill="#ffffff" />
                             <circle cx="157.5" cy="103" r="2" fill="#ffffff" opacity="0.5" />
-                            
-                            <!-- Small abstract shapes -->
-                            <circle cx="180" cy="30" r="10" fill="#2d5cf7" opacity="0.4" />
                         </svg>
                     </div>
                 </div>
                 <!-- Step 2 -->
-                <div class="bg-brandCoral rounded-3xl p-10 relative min-h-[400px] flex flex-col justify-between">
-                    <span class="step-number text-brandGreenDark">2</span>
-                    <div>
-                        <p class="text-brandBlue font-bold tracking-widest uppercase text-sm mb-4">Segundo Paso</p>
-                        <h3 class="serif text-2xl font-bold text-white mb-6 leading-tight">Listo, nosotros nos ponemos en contacto y buscamos el terapeuta que más se adecue a tu busqueda.</h3>
+                <div class="bg-white rounded-[2.5rem] p-8 md:p-12 relative flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 shadow-xl">
+                    <span class="step-number text-brandGreenDark select-none">2</span>
+                    <div class="relative z-10">
+                        <p class="text-brandBlue font-bold tracking-widest uppercase text-xs mb-4">Segundo Paso</p>
+                        <h3 class="serif text-3xl font-bold text-brandGreenDark mb-6 leading-tight">Hacemos el <br>Match</h3>
+                        <p class="text-brandGreenDark/80 text-sm leading-relaxed mb-8">Filtramos nuestra red de profesionales y confirmamos disponibilidad real con el psicólogo ideal para vos.</p>
                     </div>
-                    <div class="flex justify-center">
-                        <!-- Illustration: Modern Video Call Drawing -->
-                        <svg viewBox="0 0 200 120" class="w-64 h-auto drop-shadow-lg">
+                    <div class="flex justify-center mt-auto">
+                        <svg viewBox="0 0 200 120" class="w-44 h-auto drop-shadow-xl">
+                            <circle cx="100" cy="60" r="40" fill="#76b39d" opacity="0.1" />
+                            <circle cx="100" cy="60" r="25" fill="#76b39d" />
+                            <path d="M60 60 L140 60 M100 20 L100 100" stroke="#76b39d" stroke-width="2" stroke-dasharray="6 4" />
+                            <circle cx="100" cy="60" r="10" fill="white" opacity="0.3" />
+                        </svg>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-brandCoral rounded-[2.5rem] p-8 md:p-12 relative flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 shadow-xl">
+                    <span class="step-number text-brandGreenDark select-none">3</span>
+                    <div class="relative z-10">
+                        <p class="text-brandBlue font-bold tracking-widest uppercase text-xs mb-4">Tercer Paso</p>
+                        <h3 class="serif text-3xl font-bold text-white mb-6 leading-tight">Vinculación <br>Directa</h3>
+                        <p class="text-white/80 text-sm leading-relaxed mb-8">Una vez confirmada la vacante, abonás la tasa de conexión única y te pasamos el contacto directo para tu primera sesión.</p>
+                    </div>
+                    <div class="flex justify-center mt-auto">
+                        <svg viewBox="0 0 200 120" class="w-44 h-auto drop-shadow-xl">
                             <rect x="40" y="10" width="120" height="90" rx="15" fill="white" opacity="0.2" />
-                            <!-- Person 1 -->
                             <circle cx="75" cy="50" r="18" fill="#fbc4ab" />
                             <path d="M55 85 Q75 75 95 85 L90 100 L60 100 Z" fill="#2d3436" opacity="0.8" />
-                            <!-- Person 2 -->
                             <circle cx="125" cy="50" r="18" fill="#fbc4ab" />
                             <path d="M105 85 Q125 75 145 85 L140 100 L110 100 Z" fill="#76b39d" opacity="0.8" />
-                            <!-- Connection line -->
                             <path d="M90 50 L110 50" stroke="white" stroke-width="2" stroke-dasharray="4 2" />
                         </svg>
                     </div>
@@ -424,26 +482,125 @@
         </div>
     </section>
 
+    <!-- Data Security Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="bg-brandGreenLight rounded-[40px] p-8 md:p-16 shadow-sm border border-gray-100 overflow-hidden relative">
+                <div class="relative z-10">
+                    <div class="flex flex-col md:flex-row items-center gap-12">
+                        <div class="md:w-1/3">
+                            <div class="w-20 h-20 bg-white text-brandGreen rounded-3xl flex items-center justify-center mb-6 shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </div>
+                            <h2 class="serif text-3xl font-bold text-brandGreenDark mb-4">Tus datos, protegidos y privados</h2>
+                            <p class="text-gray-600 leading-relaxed">
+                                En Tu pSÍc, nos tomamos en serio la confidencialidad de tu consulta. Tu privacidad es nuestro pilar fundamental.
+                            </p>
+                        </div>
+                        <div class="md:w-2/3 grid sm:grid-cols-2 gap-6">
+                            <div class="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-brandGreenDark mb-3 flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-brandGreen rounded-full"></span>
+                                    Encriptación SSL
+                                </h4>
+                                <p class="text-sm text-gray-500 leading-relaxed">Tu conexión con este sitio está protegida por certificados SSL de alta seguridad.</p>
+                            </div>
+                            <div class="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-brandGreenDark mb-3 flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-brandGreen rounded-full"></span>
+                                    Uso Exclusivo
+                                </h4>
+                                <p class="text-sm text-gray-500 leading-relaxed">Los datos compartidos solo se usan para encontrarte al profesional idóneo.</p>
+                            </div>
+                            <div class="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-brandGreenDark mb-3 flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-brandGreen rounded-full"></span>
+                                    Sin Intermediarios
+                                </h4>
+                                <p class="text-sm text-gray-500 leading-relaxed">No vendemos ni compartimos tu información con terceros ajenos a la red.</p>
+                            </div>
+                            <div class="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-brandGreenDark mb-3 flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-brandGreen rounded-full"></span>
+                                    Ética Profesional
+                                </h4>
+                                <p class="text-sm text-gray-500 leading-relaxed">Manejamos tu información bajo estrictos protocolos de reserva profesional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-brandGreenDark text-white py-20">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col items-center text-center">
-                <div class="flex items-center mb-8">
-                    <img src="image.png" alt="TuPsic Logo" class="h-10 md:h-14 w-auto object-contain max-w-[200px] md:max-w-[250px]">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-2">
+                    <div class="flex items-center mb-8">
+                        <img src="image.png" alt="TuPsic Logo" class="h-10 md:h-14 w-auto object-contain max-w-[200px] md:max-w-[250px]">
+                    </div>
+                    <p class="max-w-sm mb-8 text-white/70">
+                        Conectando personas con el bienestar emocional a través de tecnología humana y profesionales de excelencia.
+                    </p>
+                    <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest opacity-40">
+                        <span>Powered by</span>
+                        <span class="bg-white/10 px-2 py-1 rounded">Hostinger</span>
+                        <span class="bg-white/10 px-2 py-1 rounded">GitHub</span>
+                    </div>
                 </div>
-                
-                <div class="flex gap-6 mb-12">
-                    <a href="#" class="hover:text-brandGreen transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.337 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.351-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-                    <a href="#" class="hover:text-brandGreen transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                    <a href="#" class="hover:text-brandGreen transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                <div>
+                    <h4 class="serif text-xl font-bold mb-6">Plataforma</h4>
+                    <ul class="space-y-4 text-sm text-white/60">
+                        <li><a href="#quienes-somos" class="hover:text-white transition-colors">Quiénes Somos</a></li>
+                        <li><a href="#como-funciona" class="hover:text-white transition-colors">Cómo Funciona</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
+                    </ul>
                 </div>
-                
-                <p class="text-sm text-white/50 mb-4">info@tupsic.com</p>
-                <a href="#" class="text-sm text-white/50 hover:text-white transition-colors underline underline-offset-4">Términos y Condiciones</a>
-                
-                <div class="mt-12 pt-8 border-t border-white/10 w-full text-xs text-white/30">
-                    © 2026 Tu Psic. Todos los derechos reservados.
+                <div>
+                    <h4 class="serif text-xl font-bold mb-6">Legal</h4>
+                    <ul class="space-y-4 text-sm text-white/60">
+                        <li><a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacidad</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
                 </div>
+            </div>
+
+            <!-- Legal and Emergency Notice -->
+            <div class="border-t border-white/10 pt-12 mb-12">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                        <h5 class="font-bold mb-3 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brandGreen" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            Aviso Legal
+                        </h5>
+                        <p class="text-xs leading-relaxed text-white/50">
+                            Tu pSÍc es una plataforma de vinculación profesional. Nuestra labor consiste en conectar pacientes con profesionales de la salud mental matriculados. No brindamos servicios de atención psicológica directa ni intervenimos en el tratamiento clínico.
+                        </p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-red-500/10 border border-red-500/20">
+                        <h5 class="font-bold mb-3 flex items-center gap-2 text-red-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            EMERGENCIAS
+                        </h5>
+                        <p class="text-xs leading-relaxed text-red-100/60">
+                            Si vos o alguien que conocés está atravesando una crisis con riesgo de vida, por favor comunicate inmediatamente con los servicios de emergencia (<span class="text-white font-bold">107 o 911 en Argentina</span>) o asistí a la guardia más cercana. Este sitio <span class="text-white font-bold underline">no es un servicio de atención de crisis</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest opacity-30">
+                <p>© 2026 Tu Psic. Todos los derechos reservados.</p>
+                <p>Hecho con ❤️ para tu salud mental.</p>
             </div>
         </div>
     </footer>
