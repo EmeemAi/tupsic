@@ -1194,46 +1194,52 @@
                     </div>
                 </div>
 
-                <!-- PASO 4: Datos de Contacto y Envío -->
+                <!-- PASO 4: Datos de Contacto y Envío (Ultra-Liviano) -->
                 <div id="wizard-step-4" class="wizard-step space-y-4">
-                    <p class="text-xs text-charcoal-500 font-medium mb-2">Para enviarte el perfil del especialista seleccionado y coordinar tu turno:</p>
-
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-charcoal-700 mb-1">Tu Nombre y Apellido *</label>
-                            <input type="text" name="nombre" id="wizard-nombre" required placeholder="Ej: Sofía Gómez" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-charcoal-700 mb-1">Edad *</label>
-                            <input type="number" name="edad" id="wizard-edad" required min="1" max="110" placeholder="Ej: 28" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
-                        </div>
+                    <div class="bg-brand-50 border border-brand-200/80 rounded-2xl p-4 flex items-center gap-3">
+                        <span class="text-xl">🔒</span>
+                        <p class="text-xs text-brand-950 leading-relaxed font-medium">
+                            <strong>100% Confidencial y sin compromiso.</strong> Solo te pedimos un nombre/apodo y tu WhatsApp para pasarte la propuesta del especialista seleccionado.
+                        </p>
                     </div>
 
                     <div class="grid sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold text-charcoal-700 mb-1">WhatsApp / Teléfono de contacto *</label>
-                            <input type="tel" name="telefono" id="wizard-telefono" required placeholder="Cod. área + número (Ej: 11 2345 6789)" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
-                            <p class="text-[10px] text-charcoal-500 mt-1">Te contactaremos por acá para pasarte la propuesta.</p>
+                            <label class="block text-xs font-bold text-charcoal-700 mb-1">¿Cómo te llamamos? (Nombre o Apodo) *</label>
+                            <input type="text" name="nombre" id="wizard-nombre" required placeholder="Ej: Sofía / Sofi" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm font-medium">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-charcoal-700 mb-1">Email *</label>
-                            <input type="email" name="email" id="wizard-email" required placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                            <label class="block text-xs font-bold text-charcoal-700 mb-1">WhatsApp de contacto *</label>
+                            <input type="tel" name="telefono" id="wizard-telefono" required placeholder="Cod. área + número (Ej: 11 2345 6789)" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm font-medium">
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Disponibilidad horaria (Opcional):</label>
-                        <textarea name="disponibilidad" rows="2" placeholder="Ej: Lunes a Viernes por la tarde, Sábados por la mañana..." class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm resize-none"></textarea>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-600 mb-1">Edad (Opcional)</label>
+                            <input type="number" name="edad" id="wizard-edad" min="1" max="110" placeholder="Ej: 28" class="w-full px-4 py-2.5 rounded-xl border border-sand-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-charcoal-600 mb-1">Email (Opcional)</label>
+                            <input type="email" name="email" id="wizard-email" placeholder="tu@email.com (opcional)" class="w-full px-4 py-2.5 rounded-xl border border-sand-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                        </div>
                     </div>
 
-                    <div class="pt-6 flex justify-between items-center">
-                        <button type="button" onclick="nextWizardStep(3)" class="text-xs font-bold text-charcoal-600 hover:text-charcoal-900 px-4 py-2">
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <button type="button" onclick="nextWizardStep(3)" class="text-xs font-bold text-charcoal-600 hover:text-charcoal-900 px-4 py-2 order-2 sm:order-1">
                             ← Volver
                         </button>
-                        <button type="submit" id="wizard-submit-btn" class="px-8 py-4 rounded-full font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-card flex items-center gap-2">
-                            <span id="wizard-btn-text">Finalizar y Solicitar Match ✨</span>
+                        <button type="submit" id="wizard-submit-btn" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-card flex items-center justify-center gap-2 order-1 sm:order-2">
+                            <span id="wizard-btn-text">Solicitar Mi Terapeuta Ideal ✨</span>
                             <span id="wizard-btn-spinner" class="hidden">Enviando...</span>
                         </button>
+                    </div>
+
+                    <!-- Fast Track WhatsApp -->
+                    <div class="pt-3 border-t border-sand-100 text-center">
+                        <a href="https://wa.me/5491100000000?text=Hola%20TuPsic,%20quisiera%20orientaci%C3%B3n%20para%20empezar%20terapia" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline">
+                            <span>¿Preferís no llenar el formulario? Hablá directo por WhatsApp →</span>
+                        </a>
                     </div>
                 </div>
             </form>
