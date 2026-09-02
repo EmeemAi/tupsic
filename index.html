@@ -1,23 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Psic | Encontrá tu psicólogo ideal online o presencial</title>
+    <meta name="description" content="Conectamos personas con psicólogos matriculados y especializados según tu motivo de consulta, disponibilidad y presupuesto. Primera sesión con garantía de afinidad.">
+    <meta name="keywords" content="psicologo online argentina, terapia online, psicologos matriculados, terapia cognitivo conductual, psicoanalisis, terapia de pareja, ansiedad, depresion">
+    
+    <!-- Open Graph / Meta Compartir -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tupsic.com/">
+    <meta property="og:title" content="Tu Psic | Encontrá tu psicólogo ideal">
+    <meta property="og:description" content="Hacé nuestro test de afinidad en 2 minutos y encontrá al terapeuta matriculado perfecto para vos.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1200">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17591616541"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'AW-17591616541');
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Psic - Encontrá tu especialista ideal</title>
     
-    <!-- Google Fonts: Libre Baskerville (Serif) & Inter (Sans) -->
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,675 +36,1617 @@
             theme: {
                 extend: {
                     colors: {
-                        brandGreen: '#76b39d',
-                        brandGreenDark: '#004d40',
-                        brandGreenLight: '#f0f7f4',
-                        brandBlue: '#2d5cf7',
-                        brandCoral: '#ff8a71',
-                        brandYellow: '#ffcc33',
-                        textDark: '#2d3436',
+                        brand: {
+                            50: '#f2f8f5',
+                            100: '#e1f0e9',
+                            200: '#c3e1d4',
+                            300: '#97ccb7',
+                            400: '#68b196',
+                            500: '#46967b',
+                            600: '#347863',
+                            700: '#2b6050',
+                            800: '#254e42',
+                            900: '#143129',
+                            950: '#0b1d18',
+                        },
+                        sand: {
+                            50: '#fdfbf7',
+                            100: '#f8f4eb',
+                            200: '#f0e8d6',
+                            300: '#e4d6ba',
+                            400: '#d4be99',
+                            500: '#be9f72',
+                        },
+                        accent: {
+                            coral: '#ff7b54',
+                            coralLight: '#fff2ee',
+                            yellow: '#ffb703',
+                            yellowLight: '#fff9e6',
+                            blue: '#2a6fdb',
+                            blueLight: '#edf4ff',
+                        },
+                        charcoal: {
+                            900: '#1a202c',
+                            800: '#2d3748',
+                            700: '#4a5568',
+                            600: '#718096',
+                            500: '#a0aec0',
+                        }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Libre Baskerville', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
                     },
-                    borderRadius: {
-                        'xl': '1rem',
-                        '2xl': '1.5rem',
-                        '3xl': '2rem',
+                    boxShadow: {
+                        'soft': '0 10px 30px -10px rgba(20, 49, 41, 0.08)',
+                        'card': '0 20px 40px -15px rgba(20, 49, 41, 0.06)',
+                        'float': '0 25px 50px -12px rgba(20, 49, 41, 0.15)',
                     }
                 }
             }
         }
     </script>
-    <style type="text/tailwindcss">
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            color: #2d3436;
-            background-color: #ffffff;
-        }
-        .serif { font-family: 'Libre Baskerville', serif; }
-        
-        .btn-pill {
-            @apply px-6 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2 min-h-[4rem];
-        }
-        .btn-primary {
-            @apply bg-brandGreen text-white hover:bg-[#65a18b] shadow-md hover:shadow-lg;
-        }
-        .btn-outline {
-            @apply border-2 border-brandGreen text-brandGreen hover:bg-brandGreen hover:text-white;
+    
+    <style>
+        .font-serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
         
-        .form-container {
-            display: none;
-        }
-        .form-container.active {
-            display: block !important;
-            padding-top: 2rem;
-            padding-bottom: 5rem !important;
-            overflow: visible !important;
-            position: relative;
-            z-index: 50;
-        }
-        
-        .card-help {
-            @apply rounded-3xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center;
-        }
-        
-        .step-number {
-            @apply text-8xl font-bold opacity-20 absolute right-4 top-4;
+        .glass-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
-        /* Custom Illustration Styles */
-        .illustration-bg {
-            background: radial-gradient(circle at center, rgba(118, 179, 157, 0.1) 0%, transparent 70%);
+        .gradient-mesh {
+            background-color: #fdfbf7;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(104, 177, 150, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(255, 183, 3, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 123, 84, 0.06) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(42, 111, 219, 0.08) 0px, transparent 50%);
+        }
+
+        .wizard-step {
+            display: none;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .custom-radio:checked + label {
+            border-color: #347863;
+            background-color: #f2f8f5;
+            color: #143129;
+            box-shadow: 0 4px 14px rgba(52, 120, 99, 0.15);
+        }
+
+        .custom-checkbox:checked + label {
+            border-color: #347863;
+            background-color: #f2f8f5;
+            color: #143129;
+            box-shadow: 0 4px 14px rgba(52, 120, 99, 0.15);
+        }
+
+        /* Pulse animation for WhatsApp */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 0; }
+            100% { transform: scale(0.95); opacity: 0; }
+        }
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            left: -6px; top: -6px; right: -6px; bottom: -6px;
+            border-radius: 9999px;
+            background-color: #25D366;
+            animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            z-index: -1;
         }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="bg-[#fdfbf7] text-charcoal-900 font-sans antialiased selection:bg-brand-100 selection:text-brand-900">
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-50">
-        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
-            <a href="/" class="flex items-center gap-3 flex-shrink-0 group">
-                <div class="relative overflow-hidden">
-                    <img src="image.png" alt="Tu pSÍc Logo" class="h-8 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden logo-fallback flex items-center gap-2">
-                        <div class="w-8 h-8 md:w-10 md:h-10 bg-brandGreen/10 rounded-lg flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brandGreen"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand-900 text-sand-100 text-xs sm:text-sm py-2.5 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-brand-500/20 text-brand-300 border border-brand-400/30">Garantía de Afinidad</span>
+        <span>Si no conectás con tu psicólogo en la 1° sesión, te reasignamos otro profesional sin cargo extra.</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 glass-header border-b border-sand-200/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo con soporte para image.png del repo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="image.png" alt="Tu pSÍc Logo" class="h-9 md:h-11 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                    <div class="hidden flex items-center gap-2.5">
+                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 flex items-center justify-center text-white shadow-soft">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                            </svg>
                         </div>
-                        <span class="serif text-xl md:text-2xl font-bold text-brandGreenDark tracking-tight">Tu<span class="text-brandGreen">pSÍc</span></span>
+                        <span class="font-serif text-2xl font-bold tracking-tight text-brand-950">Tu<span class="text-brand-600">pSÍc</span></span>
                     </div>
-                </div>
-            </a>
-            
-            <div class="flex items-center gap-6">
-                <nav class="hidden md:flex items-center gap-8 mr-4">
-                    <a href="#como-funciona" class="text-sm font-medium hover:text-brandGreen transition-colors">Cómo Funciona</a>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#como-funciona" class="text-sm font-semibold text-charcoal-700 hover:text-brand-600 transition-colors">Cómo Funciona</a>
+                    <a href="#especialidades" class="text-sm font-semibold text-charcoal-700 hover:text-brand-600 transition-colors">Especialidades</a>
+                    <a href="#especialistas" class="text-sm font-semibold text-charcoal-700 hover:text-brand-600 transition-colors">Especialistas</a>
+                    <a href="#aranceles" class="text-sm font-semibold text-charcoal-700 hover:text-brand-600 transition-colors">Aranceles</a>
+                    <a href="#preguntas-frecuentes" class="text-sm font-semibold text-charcoal-700 hover:text-brand-600 transition-colors">Preguntas Frecuentes</a>
                 </nav>
-                <button onclick="showForm('patient')" class="hidden md:block text-sm font-semibold text-brandGreenDark hover:text-brandGreen transition-colors">Buscar Terapeuta</button>
-                <button onclick="showForm('psychologist')" class="hidden md:block text-sm font-semibold px-5 py-2 rounded-full border-2 border-brandGreen text-brandGreen hover:bg-brandGreen hover:text-white transition-all">Soy Especialista</button>
-                <button onclick="toggleMobileMenu()" class="text-brandGreenDark md:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+                <!-- Action Buttons -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openPsychologistModal()" class="text-xs md:text-sm font-bold text-brand-700 hover:text-brand-900 px-4 py-2.5 rounded-full border border-brand-300 hover:border-brand-500 hover:bg-brand-50 transition-all">
+                        Soy Profesional
+                    </button>
+                    <button onclick="openPatientWizard()" class="text-xs md:text-sm font-bold text-white bg-brand-600 hover:bg-brand-700 px-5 py-2.5 rounded-full shadow-soft hover:shadow-card hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                        <span>Encontrar Terapeuta</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileNav()" class="md:hidden p-2 rounded-xl text-charcoal-800 hover:bg-sand-100" aria-label="Abrir menú">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
-            <a href="#como-funciona" onclick="toggleMobileMenu()" class="block w-full text-left text-sm font-semibold text-brandGreenDark">Cómo Funciona</a>
-            <button onclick="showForm('patient'); toggleMobileMenu();" class="block w-full text-left text-sm font-semibold text-brandGreenDark">Buscar Terapeuta</button>
-            <button onclick="showForm('psychologist'); toggleMobileMenu();" class="block w-full text-left text-sm font-semibold text-brandGreen">Soy Especialista</button>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-nav" class="hidden md:hidden bg-white border-t border-sand-200 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#como-funciona" onclick="toggleMobileNav()" class="block text-base font-semibold text-charcoal-800 hover:text-brand-600">Cómo Funciona</a>
+            <a href="#especialidades" onclick="toggleMobileNav()" class="block text-base font-semibold text-charcoal-800 hover:text-brand-600">Especialidades</a>
+            <a href="#especialistas" onclick="toggleMobileNav()" class="block text-base font-semibold text-charcoal-800 hover:text-brand-600">Especialistas</a>
+            <a href="#aranceles" onclick="toggleMobileNav()" class="block text-base font-semibold text-charcoal-800 hover:text-brand-600">Aranceles</a>
+            <a href="#preguntas-frecuentes" onclick="toggleMobileNav()" class="block text-base font-semibold text-charcoal-800 hover:text-brand-600">Preguntas Frecuentes</a>
+            <div class="pt-4 border-t border-sand-200 flex flex-col gap-3">
+                <button onclick="openPatientWizard(); toggleMobileNav();" class="w-full text-center font-bold text-white bg-brand-600 hover:bg-brand-700 py-3 rounded-xl shadow-soft">
+                    Encontrar Terapeuta
+                </button>
+                <button onclick="openPsychologistModal(); toggleMobileNav();" class="w-full text-center font-bold text-brand-700 border border-brand-300 py-3 rounded-xl hover:bg-brand-50">
+                    Soy Profesional / Postulación
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 md:pt-48 md:pb-32 bg-white">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="text-left">
-                <h1 class="serif text-5xl md:text-7xl font-bold text-brandGreenDark leading-tight mb-8">
-                    Quiero encontrar <br> <span class="text-brandGreen">mi terapeuta</span>
-                </h1>
-                <button onclick="showForm('patient')" class="btn-pill btn-primary text-lg group">
-                    Encontrar terapeuta
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </button>
-            </div>
-            <div class="relative flex justify-center items-center illustration-bg">
-                <img src="image2.png" alt="Ilustración" class="w-full max-w-md h-auto object-contain" referrerPolicy="no-referrer">
-            </div>
-        </div>
-    </section>
+    <!-- HERO SECTION -->
+    <section class="gradient-mesh pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Hero Left: Copy & CTAs -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <!-- Trust Pill -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-brand-200 shadow-sm">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                        </span>
+                        <span class="text-xs sm:text-sm font-bold text-brand-900">+120 Psicólogos Matriculados Verificados</span>
+                    </div>
 
-    <!-- Help Section -->
-    <section class="py-20 bg-brandGreen">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="serif text-4xl md:text-5xl text-white font-bold mb-6">¿Cómo te podemos ayudar?</h2>
-            <p class="text-white/90 text-lg max-w-3xl mx-auto mb-16 leading-relaxed">
-                Todos atravesamos momentos difíciles, desde inseguridades personales hasta problemas en nuestras relaciones. Te invitamos a que empieces a transformar tu vida.
-            </p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1 -->
-                <div class="card-help bg-white group cursor-pointer">
-                    <div class="w-full h-48 bg-brandGreenLight rounded-2xl mb-6 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
-                        <!-- Illustration: Mood -->
-                        <svg viewBox="0 0 100 100" class="w-32 h-32">
-                            <circle cx="50" cy="50" r="40" fill="#fff9c4" opacity="0.3" />
-                            <path d="M30 70 Q50 40 70 70" stroke="#ffcc33" stroke-width="4" fill="none" stroke-linecap="round" />
-                            <circle cx="50" cy="45" r="12" fill="#fbc4ab" />
-                            <path d="M40 65 Q50 75 60 65" stroke="#2d3436" stroke-width="2" fill="none" stroke-linecap="round" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-brandGreenDark">Ánimo</h3>
-                </div>
-                <!-- Card 2 -->
-                <div class="card-help bg-white group cursor-pointer">
-                    <div class="w-full h-48 bg-brandGreenLight rounded-2xl mb-6 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
-                        <!-- Illustration: Fears -->
-                        <svg viewBox="0 0 100 100" class="w-32 h-32">
-                            <circle cx="50" cy="50" r="40" fill="#e3f2fd" opacity="0.3" />
-                            <path d="M20 80 L40 60 M80 20 L60 40" stroke="#2d5cf7" stroke-width="2" opacity="0.4" />
-                            <circle cx="50" cy="45" r="12" fill="#fbc4ab" />
-                            <path d="M45 42 L47 42 M53 42 L55 42" stroke="#2d3436" stroke-width="2" />
-                            <path d="M45 55 Q50 50 55 55" stroke="#2d3436" stroke-width="2" fill="none" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-brandGreenDark">Miedos</h3>
-                </div>
-                <!-- Card 3 -->
-                <div class="card-help bg-white group cursor-pointer">
-                    <div class="w-full h-48 bg-brandGreenLight rounded-2xl mb-6 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
-                        <!-- Illustration: Relationships -->
-                        <svg viewBox="0 0 100 100" class="w-32 h-32">
-                            <circle cx="50" cy="50" r="40" fill="#f1f8e9" opacity="0.3" />
-                            <circle cx="35" cy="45" r="10" fill="#fbc4ab" />
-                            <circle cx="65" cy="45" r="10" fill="#fbc4ab" />
-                            <path d="M35 65 Q50 75 65 65" stroke="#76b39d" stroke-width="3" fill="none" stroke-linecap="round" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-brandGreenDark">Relaciones</h3>
-                </div>
-                <!-- Card 4 -->
-                <div class="card-help bg-white group cursor-pointer">
-                    <div class="w-full h-48 bg-brandGreenLight rounded-2xl mb-6 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
-                        <!-- Illustration: Stress -->
-                        <svg viewBox="0 0 100 100" class="w-32 h-32">
-                            <circle cx="50" cy="50" r="40" fill="#fff3e0" opacity="0.3" />
-                            <path d="M20 30 Q50 10 80 30" stroke="#ff8a71" stroke-width="2" fill="none" stroke-dasharray="4 4" />
-                            <circle cx="50" cy="50" r="12" fill="#fbc4ab" />
-                            <path d="M45 55 L55 55" stroke="#2d3436" stroke-width="2" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-brandGreenDark">Estrés</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!-- Main Headline -->
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-950 leading-[1.15] tracking-tight">
+                        Empezá terapia con el especialista <span class="font-serif-italic text-brand-600 font-semibold underline decoration-brand-300 decoration-wavy underline-offset-8">ideal para vos</span>.
+                    </h1>
 
-    <!-- Forms Section (Hidden by default) -->
-    <section id="forms-section" class="bg-brandGreenLight py-20 min-h-[200px] relative z-10">
-        <div class="container mx-auto px-6">
-            
-            <!-- Patient Form -->
-            <div id="patient-form-container" class="form-container max-w-2xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
-                <div id="patient-fields">
-                    <h2 class="serif text-3xl font-bold text-brandGreenDark mb-2">Búsqueda de Terapeuta</h2>
-                    <p class="text-gray-500 mb-8">Completá tus preferencias para que podamos ayudarte.</p>
-                    
-                    <form onsubmit="handleSubmit(event, 'patient')" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Nombre</label>
-                                <input type="text" name="nombre" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Edad</label>
-                                <input type="number" name="edad" placeholder="Tu edad" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Motivo de consulta</label>
-                                <select name="motivo" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
-                                    <option value="">Seleccionar...</option>
-                                    <option value="ansiedad">Ansiedad</option>
-                                    <option value="pareja">Pareja</option>
-                                    <option value="depresion">Depresión</option>
-                                    <option value="estres">Estrés</option>
-                                    <option value="duelo">Duelo</option>
-                                    <option value="ninos_adolescentes">Niños/Adolescentes</option>
-                                    <option value="familia">Familia</option>
-                                    <option value="otro">Otro</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Email</label>
-                                <input type="email" name="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Teléfono</label>
-                                <input type="tel" name="telefono" placeholder="Cod. área + número" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Presupuesto máximo</label>
-                                <input type="number" name="presupuesto" placeholder="$ Valor máximo" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Modalidad</label>
-                                <select name="modalidad" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
-                                    <option value="online">Online</option>
-                                    <option value="presencial">Presencial</option>
-                                    <option value="ambas">Ambas</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Ubicación / Barrio / Localidad (Si buscás presencial)</label>
-                                <input type="text" name="ubicacion" placeholder="Ej: Palermo, CABA / Rosario, Santa Fe" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Disponibilidad horaria</label>
-                            <textarea name="disponibilidad" rows="3" placeholder="Ej: Lunes a Viernes por la tarde, Sábados por la mañana..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all resize-none"></textarea>
-                        </div>
-                        <button type="submit" class="w-full btn-pill btn-primary text-lg disabled:opacity-50 disabled:cursor-not-allowed">
-                            <span class="submit-text">Enviar solicitud de búsqueda</span>
-                            <span class="loading-spinner hidden">Enviando...</span>
-                        </button>
-                        <!-- Espaciador de seguridad para móviles -->
-                        <div class="h-32 md:hidden"></div>
-                    </form>
-                </div>
-                <div id="patient-success" class="hidden text-center py-10">
-                    <div class="w-20 h-20 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <h3 class="serif text-3xl font-bold text-brandGreenDark mb-2">¡Solicitud enviada!</h3>
-                    <p class="text-gray-500">Estamos procesando tu solicitud. Te contactaremos por email en breve.</p>
-                </div>
-            </div>
-
-            <!-- Psychologist Form -->
-            <div id="psychologist-form-container" class="form-container max-w-2xl mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
-                <div id="psychologist-fields">
-                    <h2 class="serif text-3xl font-bold text-brandGreenDark mb-2">Registro de Profesional</h2>
-                    <p class="text-gray-500 mb-8">Unite a nuestra red de especialistas matriculados.</p>
-                    <form onsubmit="handleSubmit(event, 'psychologist')" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Nombre completo</label>
-                                <input type="text" name="nombre" placeholder="Como figura en tu título" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Matrícula Profesional</label>
-                                <input type="text" name="matricula" placeholder="N° de Matrícula" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Especialidad</label>
-                                <input type="text" name="especialidad" placeholder="Ej: TCC, Psicoanálisis..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Valor de la sesión</label>
-                                <input type="number" name="valor" placeholder="$ Valor promedio" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Email de contacto</label>
-                                <input type="email" name="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Teléfono / WhatsApp</label>
-                                <input type="tel" name="telefono" placeholder="Cod. área + número" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Modalidad de atención</label>
-                                <select name="modalidad" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all bg-white" required>
-                                    <option value="" disabled selected>Seleccioná una opción</option>
-                                    <option value="online">Online</option>
-                                    <option value="presencial">Presencial</option>
-                                    <option value="ambos">Ambos (Online y Presencial)</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">Ubicación / Barrio / Localidad</label>
-                                <input type="text" name="ubicacion" placeholder="Ej: Palermo, CABA / Rosario, Santa Fe" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all" required>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Disponibilidad horaria para atención</label>
-                            <textarea name="disponibilidad" rows="3" placeholder="Ej: Mañanas de 8 a 12, Tardes después de las 18hs..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brandGreen focus:ring-2 focus:ring-brandGreen/20 outline-none transition-all resize-none"></textarea>
-                        </div>
-                        <button type="submit" class="w-full btn-pill btn-outline text-sm sm:text-base md:text-lg whitespace-normal disabled:opacity-50 disabled:cursor-not-allowed">
-                            <span class="submit-text">Registrarme como profesional</span>
-                            <span class="loading-spinner hidden">Enviando...</span>
-                        </button>
-                        <!-- Espaciador de seguridad para móviles -->
-                        <div class="h-32 md:hidden"></div>
-                    </form>
-                </div>
-                <div id="psychologist-success" class="hidden text-center py-10">
-                    <div class="w-20 h-20 bg-brandGreenLight text-brandGreen rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <h3 class="serif text-3xl font-bold text-brandGreenDark mb-2">¡Registro recibido!</h3>
-                    <p class="text-gray-500">Estamos procesando tu solicitud. Te contactaremos por email en breve.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Steps Section -->
-    <section id="como-funciona" class="py-24 bg-brandGreenDark overflow-hidden relative">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="serif text-4xl md:text-5xl text-white font-bold mb-6">Claridad en el proceso</h2>
-                <p class="text-white/80 text-lg leading-relaxed">Tu camino al bienestar en 3 pasos simples y transparentes, diseñados para que encuentres ayuda sin complicaciones.</p>
-            </div>
-            <div class="grid grid-cols-1 gap-8 max-w-4xl mx-auto items-stretch">
-                <!-- Step 1 -->
-                <div class="bg-[#ffcc33] rounded-[3.5rem] p-10 md:p-14 relative flex flex-col justify-between hover:scale-[1.01] transition-transform duration-300 shadow-2xl min-h-[400px]">
-                    <span class="text-[12rem] font-bold absolute right-6 top-0 text-brandGreenDark/10 leading-none select-none">1</span>
-                    <div class="relative z-10">
-                        <p class="text-[#2d5cf7] font-bold tracking-widest uppercase text-xs mb-8">Primer Paso</p>
-                        <h3 class="serif text-4xl md:text-5xl font-bold text-brandGreenDark mb-8 leading-[1.1]">Completás el <br>formulario</h3>
-                        <p class="text-brandGreenDark/80 text-lg leading-relaxed mb-8">Nos contás qué buscás, tus motivos de consulta y tus baches horarios para que el match sea perfecto.</p>
-                    </div>
-                    <div class="flex justify-start items-end mt-auto h-32">
-                        <!-- Laptop + Phone SVG -->
-                        <svg viewBox="0 0 160 100" class="w-40 h-auto">
-                            <rect x="10" y="20" width="100" height="65" rx="5" fill="#2d3436" />
-                            <rect x="15" y="25" width="90" height="45" fill="white" />
-                            <circle cx="60" cy="78" r="2.5" fill="white" opacity="0.3" />
-                            <rect x="120" y="45" width="30" height="55" rx="4" fill="#2d3436" />
-                            <rect x="124" y="50" width="22" height="38" fill="white" />
-                            <circle cx="135" cy="94" r="2" fill="white" opacity="0.3" />
-                        </svg>
-                    </div>
-                </div>
-                <!-- Step 2 -->
-                <div class="bg-white rounded-[3.5rem] p-10 md:p-14 relative flex flex-col justify-between hover:scale-[1.01] transition-transform duration-300 shadow-2xl min-h-[400px]">
-                    <span class="text-[12rem] font-bold absolute right-6 top-0 text-[#d1dce0]/60 leading-none select-none">2</span>
-                    <div class="relative z-10">
-                        <p class="text-[#2d5cf7] font-bold tracking-widest uppercase text-xs mb-8">Segundo Paso</p>
-                        <h3 class="serif text-4xl md:text-5xl font-bold text-brandGreenDark mb-8 leading-[1.1]">Hacemos el <br>Match</h3>
-                        <p class="text-brandGreenDark/70 text-lg leading-relaxed mb-8">Filtramos nuestra red de profesionales y confirmamos disponibilidad real con el psicólogo ideal para vos.</p>
-                    </div>
-                    <div class="flex justify-center items-end mt-auto h-32">
-                        <!-- Target/Radar SVG -->
-                        <svg viewBox="0 0 100 100" class="w-28 h-auto">
-                            <circle cx="50" cy="50" r="40" fill="#76b39d" opacity="0.05" />
-                            <circle cx="50" cy="50" r="30" fill="#76b39d" opacity="0.1" />
-                            <circle cx="50" cy="50" r="15" fill="#76b39d" />
-                            <path d="M50 10 L50 90 M10 50 L90 50" stroke="#76b39d" stroke-width="1" stroke-dasharray="4 4" />
-                            <circle cx="50" cy="50" r="25" stroke="#76b39d" stroke-width="0.5" fill="none" />
-                        </svg>
-                    </div>
-                </div>
-                <!-- Step 3 -->
-                <div class="bg-[#ff8a71] rounded-[3.5rem] p-10 md:p-14 relative flex flex-col justify-between hover:scale-[1.01] transition-transform duration-300 shadow-2xl min-h-[400px]">
-                    <span class="text-[12rem] font-bold absolute right-6 top-0 text-[#b34d3d]/20 leading-none select-none">3</span>
-                    <div class="relative z-10">
-                        <p class="text-[#2d5cf7] font-bold tracking-widest uppercase text-xs mb-8">Tercer Paso</p>
-                        <h3 class="serif text-4xl md:text-5xl font-bold text-white mb-8 leading-[1.1]">Vinculación <br>Directa</h3>
-                        <p class="text-white/90 text-lg leading-relaxed mb-8">Una vez confirmada la vacante, abonás la tasa de conexión única y te pasamos el contacto directo para tu primera sesión.</p>
-                    </div>
-                    <div class="flex justify-center items-end mt-auto h-32">
-                        <!-- Connection SVG -->
-                        <svg viewBox="0 0 140 100" class="w-36 h-auto">
-                            <rect x="20" y="20" width="100" height="60" rx="12" fill="white" opacity="0.2" />
-                            <circle cx="50" cy="45" r="12" fill="#fbc4ab" />
-                            <path d="M38 75 Q50 65 62 75 L60 85 L40 85 Z" fill="#2d3436" opacity="0.8" />
-                            <circle cx="90" cy="45" r="12" fill="#fbc4ab" />
-                            <path d="M78 75 Q90 65 102 75 L100 85 L80 85 Z" fill="#76b39d" opacity="0.8" />
-                            <path d="M65 45 L75 45" stroke="white" stroke-width="2" stroke-dasharray="3 2" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center">
-                <button onclick="showForm('patient')" class="btn-pill btn-primary mx-auto text-lg group">
-                    Encontrar terapeuta
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Human Factor Section -->
-    <section class="py-24 bg-[#f0f7f4]">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-brandGreen/20 text-brandGreen text-sm font-bold mb-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brandGreen"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                        El Factor Humano
-                    </div>
-                    <h2 class="serif text-4xl md:text-6xl text-brandGreenDark font-bold mb-8 leading-tight">
-                        Personas cuidando de <span class="text-brandGreen">personas</span>.
-                    </h2>
-                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                        Entendemos que elegir un psicólogo no debe ser una cuestión de azar. En Tu pSÍc realizamos una selección activa de nuestra red de profesionales para garantizar que cada consulta sea atendida por un especialista con formación real en el área solicitada. Simplificamos el acceso a la salud mental combinando agilidad técnica con rigor profesional.
+                    <!-- Subhead -->
+                    <p class="text-lg sm:text-xl text-charcoal-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                        Conectamos lo que sentís con terapeutas capacitados en tu motivo de consulta. Atención online o presencial, aranceles accesibles y <strong>garantía de afinidad en tu primera sesión</strong>.
                     </p>
-                    <div class="flex items-center gap-4 p-6 bg-white rounded-3xl shadow-sm border border-brandGreen/10">
-                        <div class="w-12 h-12 bg-brandGreen/10 rounded-full flex items-center justify-center text-brandGreen">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+
+                    <!-- CTAs & Micro-Trust -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="openPatientWizard()" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base text-white bg-brand-600 hover:bg-brand-700 shadow-card hover:shadow-float hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3 group">
+                            <span>Hacer Test de Afinidad (2 min)</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                        <a href="https://wa.me/5491100000000?text=Hola%20TuPsic,%20quisiera%20orientación%20para%20encontrar%20un%20psicólogo" target="_blank" rel="noopener" class="w-full sm:w-auto px-6 py-4 rounded-full font-bold text-base text-charcoal-800 bg-white hover:bg-sand-50 border border-sand-300 shadow-sm hover:shadow-soft transition-all flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.125.556 4.12 1.528 5.86l-1.628 5.956 6.102-1.6c1.701.927 3.651 1.454 5.726 1.454 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            <span>Consultar por WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Social Proof / Key Values -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-sand-200/80 text-left">
+                        <div>
+                            <div class="flex items-center gap-1 text-amber-500 font-bold text-lg">
+                                <span>★ 4.9</span>
+                                <span class="text-xs text-charcoal-500 font-normal">/ 5</span>
+                            </div>
+                            <p class="text-xs text-charcoal-600 mt-0.5">Satisfacción pacientes</p>
                         </div>
                         <div>
-                            <h4 class="font-bold text-brandGreenDark">Curaduría Activa</h4>
-                            <p class="text-sm text-gray-500">Seleccionamos manualmente para tu caso.</p>
+                            <div class="font-bold text-brand-900 text-lg">100%</div>
+                            <p class="text-xs text-charcoal-600 mt-0.5">Matrícula verificada</p>
+                        </div>
+                        <div>
+                            <div class="font-bold text-brand-900 text-lg">24-48 hs</div>
+                            <p class="text-xs text-charcoal-600 mt-0.5">Tiempo promedio match</p>
                         </div>
                     </div>
                 </div>
-                <div class="lg:w-1/2 grid grid-cols-2 gap-4">
-                    <div class="space-y-4">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=600" alt="Profesional 1" class="w-full h-80 object-cover rounded-[2rem] shadow-lg" referrerPolicy="no-referrer">
-                        <div class="bg-brandYellow h-40 rounded-[2rem]"></div>
+
+                <!-- Hero Right: Interactive Visual Card Preview -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md">
+                        <!-- Background Glow decoration -->
+                        <div class="absolute -top-6 -left-6 w-72 h-72 bg-brand-200/50 rounded-full filter blur-3xl -z-10"></div>
+                        <div class="absolute -bottom-8 -right-8 w-72 h-72 bg-accent-coralLight rounded-full filter blur-2xl -z-10"></div>
+
+                        <!-- Card 1: Match Quiz Teaser -->
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-card border border-sand-200 space-y-6">
+                            <div class="flex items-center justify-between pb-4 border-b border-sand-100">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold">
+                                        1
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-brand-950 text-sm">Test de Afinidad</h3>
+                                        <p class="text-xs text-charcoal-500">¿Para quién es la consulta?</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-semibold px-2.5 py-1 bg-brand-50 text-brand-700 rounded-full">Paso 1 de 4</span>
+                            </div>
+
+                            <div class="space-y-3">
+                                <button onclick="openPatientWizardWithScope('individual')" class="w-full text-left p-3.5 rounded-2xl border-2 border-sand-200 hover:border-brand-500 hover:bg-brand-50/50 transition-all flex items-center justify-between group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-xl">👤</span>
+                                        <div>
+                                            <p class="font-bold text-charcoal-900 text-sm group-hover:text-brand-900">Para mí (Individual)</p>
+                                            <p class="text-[11px] text-charcoal-500">Mayor de 18 años</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-brand-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">Elegir →</span>
+                                </button>
+                                
+                                <button onclick="openPatientWizardWithScope('pareja')" class="w-full text-left p-3.5 rounded-2xl border-2 border-sand-200 hover:border-brand-500 hover:bg-brand-50/50 transition-all flex items-center justify-between group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-xl">👥</span>
+                                        <div>
+                                            <p class="font-bold text-charcoal-900 text-sm group-hover:text-brand-900">Terapia de Pareja</p>
+                                            <p class="text-[11px] text-charcoal-500">Para ambos miembros</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-brand-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">Elegir →</span>
+                                </button>
+
+                                <button onclick="openPatientWizardWithScope('infantil')" class="w-full text-left p-3.5 rounded-2xl border-2 border-sand-200 hover:border-brand-500 hover:bg-brand-50/50 transition-all flex items-center justify-between group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-xl">🧸</span>
+                                        <div>
+                                            <p class="font-bold text-charcoal-900 text-sm group-hover:text-brand-900">Niños o Adolescentes</p>
+                                            <p class="text-[11px] text-charcoal-500">Menores de edad</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-brand-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">Elegir →</span>
+                                </button>
+                            </div>
+
+                            <div class="bg-sand-50 rounded-2xl p-4 flex items-center gap-3 text-xs text-charcoal-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span>El test es 100% gratuito y confidencial. Sin compromiso de pago inicial.</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-6 -left-4 sm:-left-6 bg-white rounded-2xl p-4 shadow-float border border-sand-200 flex items-center gap-3 max-w-[260px]">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-brand-950">Matrículas Chequeadas</p>
+                                <p class="text-[11px] text-charcoal-500">Colegios de Psicólogos Ley 23.277</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="space-y-4 pt-12">
-                        <div class="bg-brandGreen h-40 rounded-[2rem]"></div>
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600" alt="Profesional 2" class="w-full h-80 object-cover rounded-[2rem] shadow-lg" referrerPolicy="no-referrer">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPECIALIDADES / MOTIVOS DE CONSULTA -->
+    <section id="especialidades" class="py-20 bg-white border-y border-sand-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3.5 py-1.5 rounded-full">¿En qué podemos acompañarte?</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-950 mt-4 mb-4">
+                    Especialistas para cada etapa y momento de tu vida
+                </h2>
+                <p class="text-charcoal-600 text-base sm:text-lg">
+                    Cada motivo requiere un enfoque y un profesional idóneo. Hacé clic en el área que necesitás trabajar para iniciar tu búsqueda personalizada.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Card Ansiedad -->
+                <div onclick="openPatientWizardWithReason('ansiedad')" class="group p-6 rounded-3xl bg-sand-50 hover:bg-brand-50/70 border border-sand-200/80 hover:border-brand-300 transition-all duration-300 cursor-pointer text-center flex flex-col items-center hover:-translate-y-1 shadow-sm hover:shadow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        🌪️
+                    </div>
+                    <h3 class="font-bold text-brand-950 text-base mb-1">Ansiedad y Pánico</h3>
+                    <p class="text-xs text-charcoal-500 leading-relaxed">Pensamientos intrusivos, fobias, crisis de angustia y taquicardia.</p>
+                    <span class="mt-4 text-xs font-bold text-brand-600 group-hover:underline">Buscar terapeuta →</span>
+                </div>
+
+                <!-- Card Depresión / Ánimo -->
+                <div onclick="openPatientWizardWithReason('depresion')" class="group p-6 rounded-3xl bg-sand-50 hover:bg-brand-50/70 border border-sand-200/80 hover:border-brand-300 transition-all duration-300 cursor-pointer text-center flex flex-col items-center hover:-translate-y-1 shadow-sm hover:shadow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        🌧️
+                    </div>
+                    <h3 class="font-bold text-brand-950 text-base mb-1">Depresión y Desánimo</h3>
+                    <p class="text-xs text-charcoal-500 leading-relaxed">Falta de motivación, tristeza profunda, apatía y vacío.</p>
+                    <span class="mt-4 text-xs font-bold text-brand-600 group-hover:underline">Buscar terapeuta →</span>
+                </div>
+
+                <!-- Card Pareja y Vínculos -->
+                <div onclick="openPatientWizardWithReason('pareja')" class="group p-6 rounded-3xl bg-sand-50 hover:bg-brand-50/70 border border-sand-200/80 hover:border-brand-300 transition-all duration-300 cursor-pointer text-center flex flex-col items-center hover:-translate-y-1 shadow-sm hover:shadow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        💬
+                    </div>
+                    <h3 class="font-bold text-brand-950 text-base mb-1">Pareja y Vínculos</h3>
+                    <p class="text-xs text-charcoal-500 leading-relaxed">Problemas de comunicación, celos, infidelidad y acuerdos.</p>
+                    <span class="mt-4 text-xs font-bold text-brand-600 group-hover:underline">Buscar terapeuta →</span>
+                </div>
+
+                <!-- Card Autoestima -->
+                <div onclick="openPatientWizardWithReason('autoestima')" class="group p-6 rounded-3xl bg-sand-50 hover:bg-brand-50/70 border border-sand-200/80 hover:border-brand-300 transition-all duration-300 cursor-pointer text-center flex flex-col items-center hover:-translate-y-1 shadow-sm hover:shadow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        🌱
+                    </div>
+                    <h3 class="font-bold text-brand-950 text-base mb-1">Autoestima y Límites</h3>
+                    <p class="text-xs text-charcoal-500 leading-relaxed">Inseguridad, autoexigencia, dependencia emocional y poner límites.</p>
+                    <span class="mt-4 text-xs font-bold text-brand-600 group-hover:underline">Buscar terapeuta →</span>
+                </div>
+
+                <!-- Card Estrés y Burnout -->
+                <div onclick="openPatientWizardWithReason('estres')" class="group p-6 rounded-3xl bg-sand-50 hover:bg-brand-50/70 border border-sand-200/80 hover:border-brand-300 transition-all duration-300 cursor-pointer text-center flex flex-col items-center hover:-translate-y-1 shadow-sm hover:shadow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        ⚡
+                    </div>
+                    <h3 class="font-bold text-brand-950 text-base mb-1">Estrés y Burnout</h3>
+                    <p class="text-xs text-charcoal-500 leading-relaxed">Sobrecarga laboral, agotamiento crónico y dificultad para desconectar.</p>
+                    <span class="mt-4 text-xs font-bold text-brand-600 group-hover:underline">Buscar terapeuta →</span>
+                </div>
+
+                <!-- Card Duelos y Pérdidas -->
+                <div onclick="openPatientWizardWithReason('duelo')" class="group p-6 rounded-3xl bg-sand-50 hover:bg-brand-50/70 border border-sand-200/80 hover:border-brand-300 transition-all duration-300 cursor-pointer text-center flex flex-col items-center hover:-translate-y-1 shadow-sm hover:shadow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        🕊️
+                    </div>
+                    <h3 class="font-bold text-brand-950 text-base mb-1">Duelos y Separaciones</h3>
+                    <p class="text-xs text-charcoal-500 leading-relaxed">Elaboración de pérdidas de seres queridos, rupturas amorosas o cambios.</p>
+                    <span class="mt-4 text-xs font-bold text-brand-600 group-hover:underline">Buscar terapeuta →</span>
+                </div>
+
+                <!-- Card Niños y Adolescentes -->
+                <div onclick="openPatientWizardWithReason('ninos_adolescentes')" class="group p-6 rounded-3xl bg-sand-50 hover:bg-brand-50/70 border border-sand-200/80 hover:border-brand-300 transition-all duration-300 cursor-pointer text-center flex flex-col items-center hover:-translate-y-1 shadow-sm hover:shadow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        🎨
+                    </div>
+                    <h3 class="font-bold text-brand-950 text-base mb-1">Infanto-Juvenil</h3>
+                    <p class="text-xs text-charcoal-500 leading-relaxed">Orientación a padres, conducta escolar, miedos infantiles y adolescencia.</p>
+                    <span class="mt-4 text-xs font-bold text-brand-600 group-hover:underline">Buscar terapeuta →</span>
+                </div>
+
+                <!-- Card Crecimiento Personal / Otro -->
+                <div onclick="openPatientWizardWithReason('otro')" class="group p-6 rounded-3xl bg-sand-50 hover:bg-brand-50/70 border border-sand-200/80 hover:border-brand-300 transition-all duration-300 cursor-pointer text-center flex flex-col items-center hover:-translate-y-1 shadow-sm hover:shadow-card">
+                    <div class="w-16 h-16 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        🧭
+                    </div>
+                    <h3 class="font-bold text-brand-950 text-base mb-1">Autoconocimiento</h3>
+                    <p class="text-xs text-charcoal-500 leading-relaxed">Búsqueda vocacional, toma de decisiones y desarrollo integral.</p>
+                    <span class="mt-4 text-xs font-bold text-brand-600 group-hover:underline">Buscar terapeuta →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA EN 3 PASOS TRANSPARENTES -->
+    <section id="como-funciona" class="py-24 bg-brand-950 text-sand-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-400 bg-brand-900/60 px-4 py-1.5 rounded-full border border-brand-800">Proceso Simple y Humano</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-4 mb-4">
+                    Tu camino al bienestar en 3 pasos
+                </h2>
+                <p class="text-sand-300 text-base sm:text-lg">
+                    Sin suscripciones forzadas ni esperas burocráticas. Te conectamos con el profesional adecuado cuidando tu tiempo y tu privacidad.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-brand-900/40 border border-brand-800/80 rounded-3xl p-8 flex flex-col justify-between hover:bg-brand-900/60 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-400/10 text-amber-400 border border-amber-400/20 flex items-center justify-center font-bold text-xl mb-6">
+                            1
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Completás el Test</h3>
+                        <p class="text-sand-300 text-sm leading-relaxed">
+                            Nos indicás tu motivo de consulta, si preferís atención online o presencial, y tus horarios disponibles en un formulario de 2 minutos.
+                        </p>
+                    </div>
+                    <div class="pt-8 border-t border-brand-800/40 mt-8">
+                        <span class="text-xs text-brand-400 font-semibold">✓ 100% Gratuito y confidencial</span>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-brand-900/40 border border-brand-800/80 rounded-3xl p-8 flex flex-col justify-between hover:bg-brand-900/60 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand-400/10 text-brand-400 border border-brand-400/20 flex items-center justify-center font-bold text-xl mb-6">
+                            2
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Hacemos el Match</h3>
+                        <p class="text-sand-300 text-sm leading-relaxed">
+                            Nuestro equipo orientador revisa la red de psicólogos matriculados y selecciona al especialista con formación específica y disponibilidad real para vos.
+                        </p>
+                    </div>
+                    <div class="pt-8 border-t border-brand-800/40 mt-8">
+                        <span class="text-xs text-brand-400 font-semibold">✓ Selección activa en 24-48 hs</span>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-brand-900/40 border border-brand-800/80 rounded-3xl p-8 flex flex-col justify-between hover:bg-brand-900/60 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-rose-400/10 text-rose-400 border border-rose-400/20 flex items-center justify-center font-bold text-xl mb-6">
+                            3
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white mb-3">Tu 1° Sesión Protegida</h3>
+                        <p class="text-sand-300 text-sm leading-relaxed">
+                            Te presentamos al profesional para coordinar tu primer encuentro. Si por cualquier motivo no sentís afinidad, te asignamos otro profesional sin costo.
+                        </p>
+                    </div>
+                    <div class="pt-8 border-t border-brand-800/40 mt-8">
+                        <span class="text-xs text-brand-400 font-semibold">✓ Garantía de cambio sin cargo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-14 text-center">
+                <button onclick="openPatientWizard()" class="px-8 py-4 rounded-full font-bold text-base text-brand-950 bg-amber-400 hover:bg-amber-300 shadow-soft hover:shadow-card transition-all inline-flex items-center gap-2">
+                    <span>Comenzar ahora con mi búsqueda</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPECIALISTAS DE LA RED (SHOWCASE DE CONFIANZA) -->
+    <section id="especialistas" class="py-24 bg-[#fdfbf7]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3.5 py-1.5 rounded-full">Red de Profesionales</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-950 mt-4">
+                        Psicólogos matriculados y con experiencia
+                    </h2>
+                    <p class="text-charcoal-600 text-base mt-2 max-w-xl">
+                        Cada profesional en TuPsic cuenta con título universitario legalizado, matrícula vigente y formación de posgrado en su área.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="openPatientWizard()" class="text-sm font-bold text-brand-700 bg-brand-100 hover:bg-brand-200 px-5 py-3 rounded-full transition-colors">
+                        Ver más perfiles compatibles →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Professional 1 -->
+                <div class="bg-white rounded-3xl p-6 shadow-card border border-sand-200 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=200" alt="Lic. Mariana Rossi" class="w-16 h-16 rounded-2xl object-cover border-2 border-brand-200">
+                            <div>
+                                <h3 class="font-bold text-brand-950 text-base">Lic. Mariana Rossi</h3>
+                                <p class="text-xs text-charcoal-500 font-medium">UBA | M.N. 58.412</p>
+                                <div class="flex items-center gap-1 text-amber-500 text-xs mt-1">
+                                    <span>★★★★★</span>
+                                    <span class="text-charcoal-500 font-semibold">(5.0)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal-700">Terapia Cognitivo Conductual (TCC)</span>
+                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-brand-50 text-brand-800">Ansiedad</span>
+                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal-700">Adultos</span>
+                        </div>
+                        <p class="text-xs text-charcoal-600 leading-relaxed mb-4">
+                            "Especializada en el abordaje de trastornos de ansiedad y ataques de pánico con herramientas prácticas y científicamente validadas."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-sand-100 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-emerald-700 flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Online y Presencial
+                        </span>
+                        <button onclick="openPatientWizardWithTherapist('Lic. Mariana Rossi')" class="text-xs font-bold text-brand-600 hover:text-brand-800">
+                            Solicitar turno →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Professional 2 -->
+                <div class="bg-white rounded-3xl p-6 shadow-card border border-sand-200 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Lic. Camila Benítez" class="w-16 h-16 rounded-2xl object-cover border-2 border-brand-200">
+                            <div>
+                                <h3 class="font-bold text-brand-950 text-base">Lic. Camila Benítez</h3>
+                                <p class="text-xs text-charcoal-500 font-medium">UNLP | M.P. 94.102</p>
+                                <div class="flex items-center gap-1 text-amber-500 text-xs mt-1">
+                                    <span>★★★★★</span>
+                                    <span class="text-charcoal-500 font-semibold">(4.9)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal-700">Terapia Sistémica</span>
+                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-rose-50 text-rose-800">Parejas y Familia</span>
+                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal-700">Vínculos</span>
+                        </div>
+                        <p class="text-xs text-charcoal-600 leading-relaxed mb-4">
+                            "Acompaño a parejas y familias en la resolución de conflictos vinculares, fortaleciendo la comunicación asertiva y el entendimiento mutuo."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-sand-100 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-emerald-700 flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Online
+                        </span>
+                        <button onclick="openPatientWizardWithTherapist('Lic. Camila Benítez')" class="text-xs font-bold text-brand-600 hover:text-brand-800">
+                            Solicitar turno →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Professional 3 -->
+                <div class="bg-white rounded-3xl p-6 shadow-card border border-sand-200 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Lic. Lucas Fernandez" class="w-16 h-16 rounded-2xl object-cover border-2 border-brand-200">
+                            <div>
+                                <h3 class="font-bold text-brand-950 text-base">Lic. Lucas Fernández</h3>
+                                <p class="text-xs text-charcoal-500 font-medium">UBA | M.N. 62.189</p>
+                                <div class="flex items-center gap-1 text-amber-500 text-xs mt-1">
+                                    <span>★★★★★</span>
+                                    <span class="text-charcoal-500 font-semibold">(5.0)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal-700">Psicoanálisis</span>
+                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-brand-50 text-brand-800">Duelos</span>
+                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-sand-100 text-charcoal-700">Depresión</span>
+                        </div>
+                        <p class="text-xs text-charcoal-600 leading-relaxed mb-4">
+                            "Espacio de escucha y elaboración subjetiva frente a momentos de crisis vital, separaciones y replanteos personales profundos."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-sand-100 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-emerald-700 flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Online y Presencial
+                        </span>
+                        <button onclick="openPatientWizardWithTherapist('Lic. Lucas Fernández')" class="text-xs font-bold text-brand-600 hover:text-brand-800">
+                            Solicitar turno →
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Data Security Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="bg-brandGreenLight rounded-[40px] p-8 md:p-16 shadow-sm border border-gray-100 overflow-hidden relative">
-                <div class="relative z-10">
-                    <div class="flex flex-col md:flex-row items-center gap-12">
-                        <div class="md:w-1/3">
-                            <div class="w-20 h-20 bg-white text-brandGreen rounded-3xl flex items-center justify-center mb-6 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+    <!-- ARANCELES Y TRANSPARENCIA -->
+    <section id="aranceles" class="py-20 bg-white border-y border-sand-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3.5 py-1.5 rounded-full">Precios Claros y Accesibles</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-950 mt-4 mb-4">
+                    Aranceles éticos, transparentes y sin suscripciones
+                </h2>
+                <p class="text-charcoal-600 text-base sm:text-lg">
+                    Abonás únicamente por sesión coordinada con tu profesional. Sin costos de mantenimiento mensual ni contratos forzados.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Card Online Individual -->
+                <div class="bg-sand-50 rounded-3xl p-8 border border-sand-200 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-700">Más Elegida</span>
+                        <h3 class="font-serif text-2xl font-bold text-brand-950 mt-2 mb-1">Terapia Online</h3>
+                        <p class="text-xs text-charcoal-500 mb-6">Sesión individual por videollamada segura</p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-sm font-semibold text-charcoal-600">Desde</span>
+                                <span class="text-3xl sm:text-4xl font-bold text-brand-950">$18.000</span>
+                                <span class="text-xs text-charcoal-500">ARS / sesión</span>
+                            </div>
+                            <p class="text-[11px] text-charcoal-500 mt-1">(o USD $25 para pacientes en el exterior)</p>
+                        </div>
+
+                        <ul class="space-y-3 text-xs text-charcoal-700 mb-8">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Sesiones de 45 a 50 minutos</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Flexibilidad total de horarios</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Garantía de afinidad en 1° sesión</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Factura para reintegro en prepaga</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button onclick="openPatientWizardWithModality('online')" class="w-full py-3 rounded-full font-bold text-sm text-white bg-brand-600 hover:bg-brand-700 shadow-soft transition-all">
+                        Elegir Modalidad Online
+                    </button>
+                </div>
+
+                <!-- Card Presencial -->
+                <div class="bg-white rounded-3xl p-8 border-2 border-brand-500 relative flex flex-col justify-between shadow-card">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        En Consultorio
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-charcoal-500">Cercanía y Espacio Físico</span>
+                        <h3 class="font-serif text-2xl font-bold text-brand-950 mt-2 mb-1">Terapia Presencial</h3>
+                        <p class="text-xs text-charcoal-500 mb-6">Atención en consultorios habilitados</p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-sm font-semibold text-charcoal-600">Desde</span>
+                                <span class="text-3xl sm:text-4xl font-bold text-brand-950">$22.000</span>
+                                <span class="text-xs text-charcoal-500">ARS / sesión</span>
+                            </div>
+                            <p class="text-[11px] text-charcoal-500 mt-1">(según zona y consultorio del profesional)</p>
+                        </div>
+
+                        <ul class="space-y-3 text-xs text-charcoal-700 mb-8">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>CABA, GBA y principales ciudades</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Ambiente cálido y privado</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Garantía de afinidad</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Factura para reintegro</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button onclick="openPatientWizardWithModality('presencial')" class="w-full py-3 rounded-full font-bold text-sm text-white bg-brand-700 hover:bg-brand-800 shadow-soft transition-all">
+                        Elegir Modalidad Presencial
+                    </button>
+                </div>
+
+                <!-- Card Pareja -->
+                <div class="bg-sand-50 rounded-3xl p-8 border border-sand-200 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-700">Vínculos y Familia</span>
+                        <h3 class="font-serif text-2xl font-bold text-brand-950 mt-2 mb-1">Terapia de Pareja</h3>
+                        <p class="text-xs text-charcoal-500 mb-6">Online o Presencial para ambos</p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-sm font-semibold text-charcoal-600">Desde</span>
+                                <span class="text-3xl sm:text-4xl font-bold text-brand-950">$25.000</span>
+                                <span class="text-xs text-charcoal-500">ARS / sesión</span>
+                            </div>
+                            <p class="text-[11px] text-charcoal-500 mt-1">(o USD $35 para exterior)</p>
+                        </div>
+
+                        <ul class="space-y-3 text-xs text-charcoal-700 mb-8">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Sesiones de 60 a 75 minutos</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Especialistas en terapia vincular</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Garantía de afinidad</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Emisión de factura</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button onclick="openPatientWizardWithScope('pareja')" class="w-full py-3 rounded-full font-bold text-sm text-charcoal-800 bg-white hover:bg-sand-100 border border-sand-300 shadow-sm transition-all">
+                        Elegir Terapia de Pareja
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section id="preguntas-frecuentes" class="py-24 bg-[#fdfbf7]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3.5 py-1.5 rounded-full">Dudas Habituales</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-950 mt-4 mb-4">
+                    Todo lo que necesitás saber antes de empezar
+                </h2>
+                <p class="text-charcoal-600 text-base">
+                    Respuestas transparentes sobre aranceles, funcionamiento y cómo cuidamos tu proceso.
+                </p>
+            </div>
+
+            <div class="space-y-4" id="faq-container">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-2xl border border-sand-200 overflow-hidden transition-all shadow-sm">
+                    <button onclick="toggleFaq(1)" class="w-full text-left p-6 font-bold text-brand-950 text-base flex justify-between items-center gap-4 hover:bg-sand-50/50">
+                        <span>¿Cómo funciona la Garantía de Afinidad?</span>
+                        <span id="faq-icon-1" class="text-xl text-brand-600 transition-transform duration-200">+</span>
+                    </button>
+                    <div id="faq-content-1" class="hidden px-6 pb-6 text-sm text-charcoal-600 leading-relaxed border-t border-sand-100 pt-4">
+                        El vínculo terapéutico es la clave del éxito del tratamiento. Si tras tu primera sesión sentís que no hubo química o que el estilo del profesional no es el que buscabas, nos escribís y te asignamos un nuevo especialista sin ningún costo adicional.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-2xl border border-sand-200 overflow-hidden transition-all shadow-sm">
+                    <button onclick="toggleFaq(2)" class="w-full text-left p-6 font-bold text-brand-950 text-base flex justify-between items-center gap-4 hover:bg-sand-50/50">
+                        <span>¿Aceptan obras sociales o prepagas?</span>
+                        <span id="faq-icon-2" class="text-xl text-brand-600 transition-transform duration-200">+</span>
+                    </button>
+                    <div id="faq-content-2" class="hidden px-6 pb-6 text-sm text-charcoal-600 leading-relaxed border-t border-sand-100 pt-4">
+                        Nuestros profesionales atienden de forma particular, lo que permite ofrecer turnos rápidos y sin demoras. Todos los psicólogos emiten <strong>factura profesional homologada (con número de matrícula y sello)</strong> para que puedas presentarla en tu prepaga (OSDE, Swiss Medical, Galeno, Medicus, Omint, etc.) y solicitar el reintegro según tu plan.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-2xl border border-sand-200 overflow-hidden transition-all shadow-sm">
+                    <button onclick="toggleFaq(3)" class="w-full text-left p-6 font-bold text-brand-950 text-base flex justify-between items-center gap-4 hover:bg-sand-50/50">
+                        <span>¿Cómo se abonan las sesiones?</span>
+                        <span id="faq-icon-3" class="text-xl text-brand-600 transition-transform duration-200">+</span>
+                    </button>
+                    <div id="faq-content-3" class="hidden px-6 pb-6 text-sm text-charcoal-600 leading-relaxed border-t border-sand-100 pt-4">
+                        En Argentina podés abonar por transferencia bancaria o Mercado Pago. Para pacientes en el exterior se aceptan pagos mediante tarjeta de crédito, PayPal o Stripe en dólares.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-2xl border border-sand-200 overflow-hidden transition-all shadow-sm">
+                    <button onclick="toggleFaq(4)" class="w-full text-left p-6 font-bold text-brand-950 text-base flex justify-between items-center gap-4 hover:bg-sand-50/50">
+                        <span>¿Cómo son las sesiones online?</span>
+                        <span id="faq-icon-4" class="text-xl text-brand-600 transition-transform duration-200">+</span>
+                    </button>
+                    <div id="faq-content-4" class="hidden px-6 pb-6 text-sm text-charcoal-600 leading-relaxed border-t border-sand-100 pt-4">
+                        Se realizan por plataformas encriptadas y seguras como Google Meet o Zoom. Solo necesitás un dispositivo (celular, tablet o computadora) con cámara, micrófono y un espacio privado y tranquilo donde te sientas cómodo hablando.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-white rounded-2xl border border-sand-200 overflow-hidden transition-all shadow-sm">
+                    <button onclick="toggleFaq(5)" class="w-full text-left p-6 font-bold text-brand-950 text-base flex justify-between items-center gap-4 hover:bg-sand-50/50">
+                        <span>¿Cuánto tardan en contactarme luego de completar el formulario?</span>
+                        <span id="faq-icon-5" class="text-xl text-brand-600 transition-transform duration-200">+</span>
+                    </button>
+                    <div id="faq-content-5" class="hidden px-6 pb-6 text-sm text-charcoal-600 leading-relaxed border-t border-sand-100 pt-4">
+                        Nuestro equipo orientador procesa tu solicitud en un lapso habitual de <strong>2 a 24 horas hábiles</strong>. Te contactamos por WhatsApp o email con el perfil seleccionado para que coordines el día y horario que te quede más cómodo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & LEGAL -->
+    <footer class="bg-brand-950 text-sand-100 pt-16 pb-12 border-t border-brand-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-brand-800/60">
+                <!-- Col 1: Brand Info -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="image.png" alt="Tu pSÍc Logo" class="h-9 w-auto object-contain brightness-0 invert opacity-90" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                        <div class="hidden flex items-center gap-2">
+                            <div class="w-10 h-10 rounded-2xl bg-brand-700 flex items-center justify-center text-white font-bold">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
                                 </svg>
                             </div>
-                            <h2 class="serif text-3xl font-bold text-brandGreenDark mb-4">Tus datos, protegidos y privados</h2>
-                            <p class="text-gray-600 leading-relaxed">
-                                En Tu pSÍc, nos tomamos en serio la confidencialidad de tu consulta. Tu privacidad es nuestro pilar fundamental.
-                            </p>
+                            <span class="font-serif text-2xl font-bold tracking-tight text-white">Tu<span class="text-brand-400">pSÍc</span></span>
                         </div>
-                        <div class="md:w-2/3 grid sm:grid-cols-2 gap-6">
-                            <div class="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                                <h4 class="font-bold text-brandGreenDark mb-3 flex items-center gap-2">
-                                    <span class="w-2 h-2 bg-brandGreen rounded-full"></span>
-                                    Encriptación SSL
-                                </h4>
-                                <p class="text-sm text-gray-500 leading-relaxed">Tu conexión con este sitio está protegida por certificados SSL de alta seguridad.</p>
-                            </div>
-                            <div class="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                                <h4 class="font-bold text-brandGreenDark mb-3 flex items-center gap-2">
-                                    <span class="w-2 h-2 bg-brandGreen rounded-full"></span>
-                                    Uso Exclusivo
-                                </h4>
-                                <p class="text-sm text-gray-500 leading-relaxed">Los datos compartidos solo se usan para encontrarte al profesional idóneo.</p>
-                            </div>
-                            <div class="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                                <h4 class="font-bold text-brandGreenDark mb-3 flex items-center gap-2">
-                                    <span class="w-2 h-2 bg-brandGreen rounded-full"></span>
-                                    Sin Intermediarios
-                                </h4>
-                                <p class="text-sm text-gray-500 leading-relaxed">No vendemos ni compartimos tu información con terceros ajenos a la red.</p>
-                            </div>
-                            <div class="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                                <h4 class="font-bold text-brandGreenDark mb-3 flex items-center gap-2">
-                                    <span class="w-2 h-2 bg-brandGreen rounded-full"></span>
-                                    Ética Profesional
-                                </h4>
-                                <p class="text-sm text-gray-500 leading-relaxed">Manejamos tu información bajo estrictos protocolos de reserva profesional.</p>
-                            </div>
-                        </div>
+                    </div>
+                    <p class="text-sand-300 text-sm max-w-sm leading-relaxed">
+                        Plataforma de vinculación con profesionales de la salud mental matriculados. Facilitamos el acceso a tratamientos psicológicos con calidez, rigor y transparencia.
+                    </p>
+                    <div class="flex items-center gap-4 text-xs text-brand-300 pt-2">
+                        <span>🔒 Encriptación SSL 256-bit</span>
+                        <span>•</span>
+                        <span>📜 Ley de Salud Mental N° 26.657</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-brandGreenDark text-white py-20">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-2">
-                    <div class="flex items-center gap-3 mb-8">
-                        <img src="image.png" alt="Tu pSÍc Logo" class="h-10 md:h-12 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                        <div class="hidden footer-logo-fallback flex items-center gap-2">
-                            <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                            </div>
-                            <span class="serif text-2xl md:text-3xl font-bold text-white tracking-tight">Tu<span class="text-brandGreen">pSÍc</span></span>
-                        </div>
-                    </div>
-                    <p class="max-w-sm mb-8 text-white/70">
-                        Conectando personas con el bienestar emocional a través de tecnología humana y profesionales de excelencia.
+                <!-- Col 2: Accesos -->
+                <div>
+                    <h4 class="font-serif text-base font-bold text-white mb-4">Navegación</h4>
+                    <ul class="space-y-2.5 text-sm text-sand-300">
+                        <li><a href="#como-funciona" class="hover:text-white transition-colors">Cómo Funciona</a></li>
+                        <li><a href="#especialidades" class="hover:text-white transition-colors">Especialidades</a></li>
+                        <li><a href="#especialistas" class="hover:text-white transition-colors">Nuestros Psicólogos</a></li>
+                        <li><a href="#aranceles" class="hover:text-white transition-colors">Aranceles</a></li>
+                        <li><button onclick="openPsychologistModal()" class="text-brand-400 hover:text-brand-300 font-semibold">Soy Profesional (Registro)</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contacto -->
+                <div>
+                    <h4 class="font-serif text-base font-bold text-white mb-4">Atención & Contacto</h4>
+                    <ul class="space-y-2.5 text-sm text-sand-300">
+                        <li class="flex items-center gap-2">
+                            <span>💬</span>
+                            <a href="https://wa.me/5491100000000" target="_blank" rel="noopener" class="hover:text-white transition-colors">Orientación por WhatsApp</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span>✉️</span>
+                            <span>contacto@tupsic.com</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span>🇦🇷</span>
+                            <span>Argentina y Atención Global</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal and Crisis Notice -->
+            <div class="py-8 grid md:grid-cols-2 gap-6 text-xs text-sand-400 border-b border-brand-800/40">
+                <div class="p-5 rounded-2xl bg-brand-900/40 border border-brand-800/60">
+                    <p class="font-bold text-sand-200 mb-1">Aviso Legal:</p>
+                    <p class="leading-relaxed">
+                        Tu pSÍc es una plataforma de derivación y matching profesional. No brinda atención psicológica de urgencia directa. El tratamiento clínico y la relación médico-paciente es exclusiva responsabilidad del profesional matriculado interviniente.
                     </p>
                 </div>
-                <div>
-                    <h4 class="serif text-xl font-bold mb-6">Plataforma</h4>
-                    <ul class="space-y-4 text-sm text-white/60">
-                        <li><a href="#como-funciona" class="hover:text-white transition-colors">Cómo Funciona</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="serif text-xl font-bold mb-6">Legal</h4>
-                    <ul class="space-y-4 text-sm text-white/60">
-                        <li><a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Privacidad</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
-                    </ul>
+                <div class="p-5 rounded-2xl bg-rose-950/30 border border-rose-900/40 text-rose-200">
+                    <p class="font-bold text-rose-300 mb-1">Línea de Asistencia en Crisis:</p>
+                    <p class="leading-relaxed">
+                        Si vos o un allegado se encuentra en situación de riesgo o crisis con peligro de vida, comunicate inmediatamente con los números de emergencia pública: <strong>107 o 911 en Argentina</strong>, o con el Centro de Asistencia al Suicida (CAS): <strong>135</strong> o <strong>(011) 5275-1135</strong>.
+                    </p>
                 </div>
             </div>
 
-            <!-- Legal and Emergency Notice -->
-            <div class="border-t border-white/10 pt-12 mb-12">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
-                        <h5 class="font-bold mb-3 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brandGreen" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                            </svg>
-                            Aviso Legal
-                        </h5>
-                        <p class="text-xs leading-relaxed text-white/50">
-                            Tu pSÍc es una plataforma de vinculación profesional. Nuestra labor consiste en conectar pacientes con profesionales de la salud mental matriculados. No brindamos servicios de atención psicológica directa ni intervenimos en el tratamiento clínico.
-                        </p>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-red-500/10 border border-red-500/20">
-                        <h5 class="font-bold mb-3 flex items-center gap-2 text-red-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                            </svg>
-                            EMERGENCIAS
-                        </h5>
-                        <p class="text-xs leading-relaxed text-red-100/60">
-                            Si vos o alguien que conocés está atravesando una crisis con riesgo de vida, por favor comunicate inmediatamente con los servicios de emergencia (<span class="text-white font-bold">107 o 911 en Argentina</span>) o asistí a la guardia más cercana. Este sitio <span class="text-white font-bold underline">no es un servicio de atención de crisis</span>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest opacity-30">
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand-400">
                 <p>© 2026 Tu Psic. Todos los derechos reservados.</p>
-                <p>Hecho con ❤️ para tu salud mental.</p>
+                <p>Cuidando la salud mental con tecnología y calidez humana.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <div class="fixed bottom-6 right-6 z-50 flex items-center group">
+        <!-- Tooltip -->
+        <div class="hidden md:flex mr-3 bg-white text-charcoal-900 text-xs font-semibold py-2 px-3.5 rounded-full shadow-float border border-sand-200 opacity-95 group-hover:opacity-100 transition-opacity whitespace-nowrap items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>¿Dudas? Chateá con un asesor</span>
+        </div>
+        <a href="https://wa.me/5491100000000?text=Hola%20TuPsic,%20quisiera%20que%20me%20ayuden%20a%20encontrar%20un%20psic%C3%B3logo" target="_blank" rel="noopener" onclick="trackEvent('whatsapp_click', 'float_button')" class="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-float hover:scale-110 transition-all duration-300 pulse-ring relative" aria-label="Contactar por WhatsApp">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.125.556 4.12 1.528 5.86l-1.628 5.956 6.102-1.6c1.701.927 3.651 1.454 5.726 1.454 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL / WIZARD INTERACTIVO PACIENTE (HIGH-CONVERTING ONBOARDING WIZARD) -->
+    <!-- ========================================================================= -->
+    <div id="patient-modal" class="fixed inset-0 z-50 hidden bg-charcoal-900/60 backdrop-blur-sm overflow-y-auto p-4 sm:p-6 md:p-10 flex items-center justify-center">
+        <div class="bg-white w-full max-w-2xl rounded-[2rem] shadow-float border border-sand-200 overflow-hidden relative my-auto">
+            
+            <!-- Header Modal con Barra de Progreso -->
+            <div class="bg-sand-50 p-6 sm:p-8 border-b border-sand-200 relative">
+                <button onclick="closePatientWizard()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white text-charcoal-600 hover:text-charcoal-900 border border-sand-200 flex items-center justify-center shadow-sm" aria-label="Cerrar">
+                    ✕
+                </button>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-3 py-1 rounded-full">Test de Afinidad</span>
+                    <span id="wizard-step-label" class="text-xs font-semibold text-charcoal-500">Paso 1 de 4</span>
+                </div>
+                <h3 id="wizard-title" class="font-serif text-2xl sm:text-3xl font-bold text-brand-950">
+                    ¿Para quién es la consulta?
+                </h3>
+                
+                <!-- Barra de Progreso -->
+                <div class="w-full bg-sand-200 h-2 rounded-full mt-5 overflow-hidden">
+                    <div id="wizard-progress-bar" class="bg-brand-600 h-full rounded-full transition-all duration-300" style="width: 25%;"></div>
+                </div>
+            </div>
+
+            <!-- Form Body -->
+            <form id="patient-wizard-form" onsubmit="submitPatientForm(event)" class="p-6 sm:p-8">
+                
+                <!-- PASO 1: Destinatario -->
+                <div id="wizard-step-1" class="wizard-step active space-y-4">
+                    <p class="text-xs text-charcoal-500 font-medium mb-2">Seleccioná la opción que mejor describa tu caso:</p>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <input type="radio" name="destinatario" id="dest-individual" value="Individual (Adulto)" class="hidden custom-radio" checked>
+                            <label for="dest-individual" class="p-4 rounded-2xl border-2 border-sand-200 flex items-center justify-between cursor-pointer hover:border-brand-400 transition-all">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">👤</span>
+                                    <div>
+                                        <p class="font-bold text-sm text-brand-950">Para mí (Individual)</p>
+                                        <p class="text-xs text-charcoal-500">Terapia individual para mayores de 18 años</p>
+                                    </div>
+                                </div>
+                                <span class="w-5 h-5 rounded-full border-2 border-sand-300 flex items-center justify-center check-dot"></span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="destinatario" id="dest-pareja" value="Pareja" class="hidden custom-radio">
+                            <label for="dest-pareja" class="p-4 rounded-2xl border-2 border-sand-200 flex items-center justify-between cursor-pointer hover:border-brand-400 transition-all">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">👥</span>
+                                    <div>
+                                        <p class="font-bold text-sm text-brand-950">Terapia de Pareja</p>
+                                        <p class="text-xs text-charcoal-500">Para abordar dinámicas vinculares y convivencia</p>
+                                    </div>
+                                </div>
+                                <span class="w-5 h-5 rounded-full border-2 border-sand-300 flex items-center justify-center check-dot"></span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="destinatario" id="dest-infantil" value="Niños / Adolescentes" class="hidden custom-radio">
+                            <label for="dest-infantil" class="p-4 rounded-2xl border-2 border-sand-200 flex items-center justify-between cursor-pointer hover:border-brand-400 transition-all">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">🧸</span>
+                                    <div>
+                                        <p class="font-bold text-sm text-brand-950">Para mi hijo/a (Niños o Adolescentes)</p>
+                                        <p class="text-xs text-charcoal-500">Especialistas en clínica infanto-juvenil</p>
+                                    </div>
+                                </div>
+                                <span class="w-5 h-5 rounded-full border-2 border-sand-300 flex items-center justify-center check-dot"></span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" name="destinatario" id="dest-familiar" value="Familiar" class="hidden custom-radio">
+                            <label for="dest-familiar" class="p-4 rounded-2xl border-2 border-sand-200 flex items-center justify-between cursor-pointer hover:border-brand-400 transition-all">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-2xl">🏡</span>
+                                    <div>
+                                        <p class="font-bold text-sm text-brand-950">Terapia Familiar</p>
+                                        <p class="text-xs text-charcoal-500">Abordaje grupal de vínculos familiares</p>
+                                    </div>
+                                </div>
+                                <span class="w-5 h-5 rounded-full border-2 border-sand-300 flex items-center justify-center check-dot"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 flex justify-end">
+                        <button type="button" onclick="nextWizardStep(2)" class="px-8 py-3.5 rounded-full font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-soft flex items-center gap-2">
+                            <span>Siguiente</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PASO 2: Motivo y Síntomas -->
+                <div id="wizard-step-2" class="wizard-step space-y-4">
+                    <p class="text-xs text-charcoal-500 font-medium mb-2">¿Cuáles son los principales motivos de tu búsqueda? (Podés marcar varios):</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[300px] overflow-y-auto pr-1">
+                        <div>
+                            <input type="checkbox" name="motivos" id="motivo-ansiedad" value="Ansiedad y Pánico" class="hidden custom-checkbox">
+                            <label for="motivo-ansiedad" class="p-3.5 rounded-xl border border-sand-200 flex items-center gap-2.5 cursor-pointer hover:border-brand-400 text-xs font-semibold">
+                                <span>🌪️</span>
+                                <span>Ansiedad / Crisis de angustia</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="motivos" id="motivo-depresion" value="Depresión y Desánimo" class="hidden custom-checkbox">
+                            <label for="motivo-depresion" class="p-3.5 rounded-xl border border-sand-200 flex items-center gap-2.5 cursor-pointer hover:border-brand-400 text-xs font-semibold">
+                                <span>🌧️</span>
+                                <span>Depresión / Falta de ganas</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="motivos" id="motivo-pareja" value="Vínculos y Pareja" class="hidden custom-checkbox">
+                            <label for="motivo-pareja" class="p-3.5 rounded-xl border border-sand-200 flex items-center gap-2.5 cursor-pointer hover:border-brand-400 text-xs font-semibold">
+                                <span>💬</span>
+                                <span>Conflictos de Pareja / Vínculos</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="motivos" id="motivo-autoestima" value="Autoestima y Seguridad" class="hidden custom-checkbox">
+                            <label for="motivo-autoestima" class="p-3.5 rounded-xl border border-sand-200 flex items-center gap-2.5 cursor-pointer hover:border-brand-400 text-xs font-semibold">
+                                <span>🌱</span>
+                                <span>Autoestima y Poner Límites</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="motivos" id="motivo-estres" value="Estrés Laboral y Burnout" class="hidden custom-checkbox">
+                            <label for="motivo-estres" class="p-3.5 rounded-xl border border-sand-200 flex items-center gap-2.5 cursor-pointer hover:border-brand-400 text-xs font-semibold">
+                                <span>⚡</span>
+                                <span>Estrés laboral / Burnout</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="motivos" id="motivo-duelo" value="Duelo y Separación" class="hidden custom-checkbox">
+                            <label for="motivo-duelo" class="p-3.5 rounded-xl border border-sand-200 flex items-center gap-2.5 cursor-pointer hover:border-brand-400 text-xs font-semibold">
+                                <span>🕊️</span>
+                                <span>Duelos / Separaciones</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="motivos" id="motivo-infanto" value="Infanto-Juvenil" class="hidden custom-checkbox">
+                            <label for="motivo-infanto" class="p-3.5 rounded-xl border border-sand-200 flex items-center gap-2.5 cursor-pointer hover:border-brand-400 text-xs font-semibold">
+                                <span>🎨</span>
+                                <span>Niños / Orientación a Padres</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="motivos" id="motivo-otro" value="Autoconocimiento y Otro" class="hidden custom-checkbox">
+                            <label for="motivo-otro" class="p-3.5 rounded-xl border border-sand-200 flex items-center gap-2.5 cursor-pointer hover:border-brand-400 text-xs font-semibold">
+                                <span>🧭</span>
+                                <span>Autoconocimiento / Otro motivo</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 flex justify-between items-center">
+                        <button type="button" onclick="nextWizardStep(1)" class="text-xs font-bold text-charcoal-600 hover:text-charcoal-900 px-4 py-2">
+                            ← Volver
+                        </button>
+                        <button type="button" onclick="nextWizardStep(3)" class="px-8 py-3.5 rounded-full font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-soft flex items-center gap-2">
+                            <span>Siguiente</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PASO 3: Modalidad y Preferencias -->
+                <div id="wizard-step-3" class="wizard-step space-y-5">
+                    <!-- Modalidad -->
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-2">Modalidad de atención:</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div>
+                                <input type="radio" name="modalidad" id="mod-online" value="online" class="hidden custom-radio" checked onchange="toggleUbicacionField(false)">
+                                <label for="mod-online" class="p-3 rounded-xl border border-sand-200 flex flex-col items-center justify-center cursor-pointer text-center hover:border-brand-400 text-xs font-bold">
+                                    <span class="text-lg mb-1">💻</span>
+                                    <span>Online</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" name="modalidad" id="mod-presencial" value="presencial" class="hidden custom-radio" onchange="toggleUbicacionField(true)">
+                                <label for="mod-presencial" class="p-3 rounded-xl border border-sand-200 flex flex-col items-center justify-center cursor-pointer text-center hover:border-brand-400 text-xs font-bold">
+                                    <span class="text-lg mb-1">🏢</span>
+                                    <span>Presencial</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" name="modalidad" id="mod-ambas" value="ambas" class="hidden custom-radio" onchange="toggleUbicacionField(true)">
+                                <label for="mod-ambas" class="p-3 rounded-xl border border-sand-200 flex flex-col items-center justify-center cursor-pointer text-center hover:border-brand-400 text-xs font-bold">
+                                    <span class="text-lg mb-1">✨</span>
+                                    <span>Indistinto</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ubicación si es presencial -->
+                    <div id="ubicacion-container" class="hidden">
+                        <label class="block text-xs font-semibold text-charcoal-700 mb-1">Barrio, Localidad o Ciudad de preferencia:</label>
+                        <input type="text" name="ubicacion" id="wizard-ubicacion" placeholder="Ej: Palermo, Belgrano / Córdoba Capital / Rosario..." class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                    </div>
+
+                    <!-- Rango de Arancel Sugerido (Presupuesto) -->
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-2">Presupuesto orientativo por sesión:</label>
+                        <select name="presupuesto" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm bg-white font-medium">
+                            <option value="18000">Arancel Estándar Accesible (Hasta $18.000 ARS / USD $25)</option>
+                            <option value="25000" selected>Rango Medio ($18.000 a $25.000 ARS / USD $30-$35)</option>
+                            <option value="35000">Especialista Senior / Parejas (Más de $30.000 ARS / USD $45+)</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-6 flex justify-between items-center">
+                        <button type="button" onclick="nextWizardStep(2)" class="text-xs font-bold text-charcoal-600 hover:text-charcoal-900 px-4 py-2">
+                            ← Volver
+                        </button>
+                        <button type="button" onclick="nextWizardStep(4)" class="px-8 py-3.5 rounded-full font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-soft flex items-center gap-2">
+                            <span>Siguiente</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PASO 4: Datos de Contacto y Envío -->
+                <div id="wizard-step-4" class="wizard-step space-y-4">
+                    <p class="text-xs text-charcoal-500 font-medium mb-2">Para enviarte el perfil del especialista seleccionado y coordinar tu turno:</p>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-charcoal-700 mb-1">Tu Nombre y Apellido *</label>
+                            <input type="text" name="nombre" id="wizard-nombre" required placeholder="Ej: Sofía Gómez" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-charcoal-700 mb-1">Edad *</label>
+                            <input type="number" name="edad" id="wizard-edad" required min="1" max="110" placeholder="Ej: 28" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-charcoal-700 mb-1">WhatsApp / Teléfono de contacto *</label>
+                            <input type="tel" name="telefono" id="wizard-telefono" required placeholder="Cod. área + número (Ej: 11 2345 6789)" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                            <p class="text-[10px] text-charcoal-500 mt-1">Te contactaremos por acá para pasarte la propuesta.</p>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-charcoal-700 mb-1">Email *</label>
+                            <input type="email" name="email" id="wizard-email" required placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Disponibilidad horaria (Opcional):</label>
+                        <textarea name="disponibilidad" rows="2" placeholder="Ej: Lunes a Viernes por la tarde, Sábados por la mañana..." class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm resize-none"></textarea>
+                    </div>
+
+                    <div class="pt-6 flex justify-between items-center">
+                        <button type="button" onclick="nextWizardStep(3)" class="text-xs font-bold text-charcoal-600 hover:text-charcoal-900 px-4 py-2">
+                            ← Volver
+                        </button>
+                        <button type="submit" id="wizard-submit-btn" class="px-8 py-4 rounded-full font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-card flex items-center gap-2">
+                            <span id="wizard-btn-text">Finalizar y Solicitar Match ✨</span>
+                            <span id="wizard-btn-spinner" class="hidden">Enviando...</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Success State -->
+            <div id="wizard-success-state" class="hidden p-8 sm:p-12 text-center space-y-6">
+                <div class="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-4xl shadow-soft">
+                    ✓
+                </div>
+                <div>
+                    <h3 class="font-serif text-3xl font-bold text-brand-950 mb-2">¡Solicitud recibida con éxito!</h3>
+                    <p class="text-sm sm:text-base text-charcoal-600 max-w-md mx-auto leading-relaxed">
+                        Nuestro equipo orientador está buscando al psicólogo ideal para tu motivo de consulta. Te contactaremos a la brevedad por WhatsApp o email.
+                    </p>
+                </div>
+                <div class="bg-sand-50 rounded-2xl p-4 max-w-md mx-auto text-xs text-charcoal-600 border border-sand-200 text-left space-y-1.5">
+                    <p class="font-bold text-brand-950">Próximos pasos:</p>
+                    <p>1. Recibirás la ficha del terapeuta seleccionado con su matrícula y disponibilidad.</p>
+                    <p>2. Coordinan el día y hora de tu primera sesión con Garantía de Afinidad.</p>
+                </div>
+                <div class="pt-4 flex flex-col sm:flex-row justify-center gap-3">
+                    <button onclick="closePatientWizard()" class="px-6 py-3 rounded-full font-bold text-sm text-charcoal-700 bg-sand-100 hover:bg-sand-200">
+                        Cerrar
+                    </button>
+                    <a id="success-whatsapp-link" href="https://wa.me/5491100000000?text=Hola!%20Acabo%20de%20enviar%20el%20test%20en%20TuPsic" target="_blank" rel="noopener" class="px-6 py-3 rounded-full font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-700 flex items-center justify-center gap-2">
+                        <span>Avisar por WhatsApp</span>
+                        <span>💬</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL REGISTRO DE PROFESIONALES (SOY ESPECIALISTA) -->
+    <!-- ========================================================================= -->
+    <div id="psychologist-modal" class="fixed inset-0 z-50 hidden bg-charcoal-900/60 backdrop-blur-sm overflow-y-auto p-4 sm:p-6 md:p-10 flex items-center justify-center">
+        <div class="bg-white w-full max-w-2xl rounded-[2rem] shadow-float border border-sand-200 overflow-hidden relative my-auto">
+            
+            <div class="bg-brand-950 text-sand-50 p-6 sm:p-8 relative">
+                <button onclick="closePsychologistModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-brand-900 text-sand-200 hover:text-white border border-brand-800 flex items-center justify-center" aria-label="Cerrar">
+                    ✕
+                </button>
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-400 bg-brand-900/80 px-3 py-1 rounded-full border border-brand-800">Red de Profesionales</span>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-2">
+                    Sumate como especialista a TuPsic
+                </h3>
+                <p class="text-xs text-sand-300 mt-1">
+                    Recibí pacientes derivados que coincidan con tu enfoque clínico, disponibilidad y modalidad de atención.
+                </p>
+            </div>
+
+            <form id="psychologist-form" onsubmit="submitPsychologistForm(event)" class="p-6 sm:p-8 space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Nombre completo (como figura en tu título) *</label>
+                        <input type="text" name="nombre" required placeholder="Ej: Lic. Martín Rossi" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Matrícula Profesional (M.N. o M.P.) *</label>
+                        <input type="text" name="matricula" required placeholder="Ej: M.N. 45.120" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Especialidad / Enfoque *</label>
+                        <input type="text" name="especialidad" required placeholder="Ej: TCC, Psicoanálisis, Sistémica..." class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Valor de la sesión *</label>
+                        <input type="number" name="valor" required placeholder="Ej: 20000" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Email de contacto *</label>
+                        <input type="email" name="email" required placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Teléfono / WhatsApp *</label>
+                        <input type="tel" name="telefono" required placeholder="Cod. área + número" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Modalidad de atención *</label>
+                        <select name="modalidad" required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm bg-white font-medium">
+                            <option value="online">Online</option>
+                            <option value="presencial">Presencial</option>
+                            <option value="ambos" selected>Ambos (Online y Presencial)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-charcoal-700 mb-1">Ubicación / Barrio / Localidad *</label>
+                        <input type="text" name="ubicacion" required placeholder="Ej: Palermo, CABA / Rosario, Santa Fe" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-charcoal-700 mb-1">Disponibilidad horaria para atención:</label>
+                    <textarea name="disponibilidad" rows="3" placeholder="Ej: Mañanas de 8 a 12, Tardes después de las 18hs..." class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none text-sm resize-none"></textarea>
+                </div>
+
+                <div class="pt-4 flex justify-end gap-3">
+                    <button type="button" onclick="closePsychologistModal()" class="px-6 py-3 rounded-full font-bold text-sm text-charcoal-600 hover:text-charcoal-900">
+                        Cancelar
+                    </button>
+                    <button type="submit" id="psychologist-submit-btn" class="px-8 py-3.5 rounded-full font-bold text-sm text-white bg-brand-600 hover:bg-brand-700 shadow-soft">
+                        <span id="psychologist-btn-text">Registrarme como profesional</span>
+                        <span id="psychologist-btn-spinner" class="hidden">Enviando...</span>
+                    </button>
+                </div>
+            </form>
+
+            <div id="psychologist-success-state" class="hidden p-8 sm:p-12 text-center space-y-6">
+                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-3xl">
+                    ✓
+                </div>
+                <div>
+                    <h3 class="font-serif text-2xl font-bold text-brand-950 mb-2">¡Registro recibido!</h3>
+                    <p class="text-sm text-charcoal-600 max-w-md mx-auto">
+                        Estamos procesando tu solicitud. Te contactaremos por email en breve.
+                    </p>
+                </div>
+                <button onclick="closePsychologistModal()" class="px-6 py-3 rounded-full font-bold text-sm text-white bg-brand-600 hover:bg-brand-700">
+                    Aceptar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT & ENGINE -->
     <script>
-        // REEMPLAZA ESTA URL con la de tu Google Apps Script implementado
+        // Endpoint Google Apps Script conectado con tus Sheets actuales
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby1nnMx3QAkteq0fViaUNWlm17zgMHbKqPHbaAB-JjOUyrXGFeSpgU-eNosT9MOIWlU/exec';
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        // Wizard State
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        const stepTitles = {
+            1: "¿Para quién es la consulta?",
+            2: "¿Qué motivo te gustaría trabajar?",
+            3: "Modalidad y preferencias del terapeuta",
+            4: "Tus datos para coordinar el turno"
+        };
+
+        // Navigation
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            nav.classList.toggle('hidden');
         }
 
-        function showForm(type) {
-            const patientContainer = document.getElementById('patient-form-container');
-            const psychologistContainer = document.getElementById('psychologist-form-container');
-            const formsSection = document.getElementById('forms-section');
+        // Open/Close Modals
+        function openPatientWizard() {
+            document.getElementById('patient-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            goToStep(1);
+        }
 
-            // Reset success messages
-            document.getElementById('patient-fields').style.display = 'block';
-            document.getElementById('patient-success').classList.add('hidden');
-            document.getElementById('psychologist-fields').style.display = 'block';
-            document.getElementById('psychologist-success').classList.add('hidden');
+        function openPatientWizardWithScope(scope) {
+            openPatientWizard();
+            if (scope === 'individual') document.getElementById('dest-individual').checked = true;
+            if (scope === 'pareja') document.getElementById('dest-pareja').checked = true;
+            if (scope === 'infantil') document.getElementById('dest-infantil').checked = true;
+            if (scope === 'familiar') document.getElementById('dest-familiar').checked = true;
+            nextWizardStep(2);
+        }
 
-            if (type === 'patient') {
-                psychologistContainer.classList.remove('active');
-                patientContainer.classList.add('active');
+        function openPatientWizardWithReason(reason) {
+            openPatientWizard();
+            document.querySelectorAll('input[name="motivos"]').forEach(cb => cb.checked = false);
+            
+            const mapping = {
+                'ansiedad': 'motivo-ansiedad',
+                'depresion': 'motivo-depresion',
+                'pareja': 'motivo-pareja',
+                'autoestima': 'motivo-autoestima',
+                'estres': 'motivo-estres',
+                'duelo': 'motivo-duelo',
+                'ninos_adolescentes': 'motivo-infanto',
+                'otro': 'motivo-otro'
+            };
+            if (mapping[reason]) {
+                const el = document.getElementById(mapping[reason]);
+                if (el) el.checked = true;
+            }
+            goToStep(2);
+        }
+
+        function openPatientWizardWithModality(mod) {
+            openPatientWizard();
+            if (mod === 'online') {
+                document.getElementById('mod-online').checked = true;
+                toggleUbicacionField(false);
             } else {
-                patientContainer.classList.remove('active');
-                psychologistContainer.classList.add('active');
+                document.getElementById('mod-presencial').checked = true;
+                toggleUbicacionField(true);
+            }
+            goToStep(3);
+        }
+
+        function openPatientWizardWithTherapist(therapistName) {
+            openPatientWizard();
+            goToStep(1);
+        }
+
+        function closePatientWizard() {
+            document.getElementById('patient-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => {
+                document.getElementById('patient-wizard-form').style.display = 'block';
+                document.getElementById('wizard-success-state').classList.add('hidden');
+                document.getElementById('patient-wizard-form').reset();
+            }, 300);
+        }
+
+        function openPsychologistModal() {
+            document.getElementById('psychologist-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePsychologistModal() {
+            document.getElementById('psychologist-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => {
+                document.getElementById('psychologist-form').style.display = 'block';
+                document.getElementById('psychologist-success-state').classList.add('hidden');
+                document.getElementById('psychologist-form').reset();
+            }, 300);
+        }
+
+        // Wizard Stepper Logic
+        function goToStep(stepNumber) {
+            currentStep = stepNumber;
+            for (let i = 1; i <= totalSteps; i++) {
+                const stepEl = document.getElementById(`wizard-step-${i}`);
+                if (stepEl) {
+                    if (i === stepNumber) {
+                        stepEl.classList.add('active');
+                    } else {
+                        stepEl.classList.remove('active');
+                    }
+                }
             }
 
-            // Smooth scroll
-            formsSection.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('wizard-step-label').textContent = `Paso ${stepNumber} de ${totalSteps}`;
+            document.getElementById('wizard-title').textContent = stepTitles[stepNumber] || '';
+            const percent = (stepNumber / totalSteps) * 100;
+            document.getElementById('wizard-progress-bar').style.width = `${percent}%`;
         }
 
-        async function handleSubmit(event, type) {
+        function nextWizardStep(stepNumber) {
+            if (currentStep === 2 && stepNumber > currentStep) {
+                const checkedReasons = document.querySelectorAll('input[name="motivos"]:checked');
+                if (checkedReasons.length === 0) {
+                    alert('Por favor, seleccioná al menos un motivo para poder orientar tu búsqueda.');
+                    return;
+                }
+            }
+            goToStep(stepNumber);
+        }
+
+        function toggleUbicacionField(show) {
+            const el = document.getElementById('ubicacion-container');
+            if (show) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        // FAQs Accordion
+        function toggleFaq(num) {
+            const content = document.getElementById(`faq-content-${num}`);
+            const icon = document.getElementById(`faq-icon-${num}`);
+            const isHidden = content.classList.contains('hidden');
+            
+            for (let i = 1; i <= 5; i++) {
+                const c = document.getElementById(`faq-content-${i}`);
+                const ic = document.getElementById(`faq-icon-${i}`);
+                if (c && ic) {
+                    c.classList.add('hidden');
+                    ic.textContent = '+';
+                }
+            }
+
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.textContent = '−';
+            }
+        }
+
+        // Conversion Tracking Helper
+        function trackEvent(eventName, category) {
+            try {
+                if (typeof gtag === 'function') {
+                    gtag('event', eventName, {
+                        'event_category': category,
+                        'event_label': window.location.pathname
+                    });
+                }
+            } catch(e) {
+                console.warn('Analytics tracking:', e);
+            }
+        }
+
+        // SUBMIT PACIENTES (Compatible 100% con tu Google Sheet 'pacientes')
+        async function submitPatientForm(event) {
             event.preventDefault();
             const form = event.target;
-            const btn = form.querySelector('button[type="submit"]');
-            const submitText = btn.querySelector('.submit-text');
-            const loadingSpinner = btn.querySelector('.loading-spinner');
+            const submitBtn = document.getElementById('wizard-submit-btn');
+            const btnText = document.getElementById('wizard-btn-text');
+            const btnSpinner = document.getElementById('wizard-btn-spinner');
 
             // UI Feedback
-            btn.disabled = true;
-            submitText.classList.add('hidden');
-            loadingSpinner.classList.remove('hidden');
+            submitBtn.disabled = true;
+            btnText.classList.add('hidden');
+            btnSpinner.classList.remove('hidden');
 
             const formData = new FormData(form);
-            // Agregamos el nombre de la hoja según el tipo
-            formData.append('sheetName', type === 'patient' ? 'pacientes' : 'especialistas');
+            formData.append('sheetName', 'pacientes');
+
+            // Formatear motivos seleccionados para que queden claros en la columna 'motivo' de tu Sheet
+            const destinatario = document.querySelector('input[name="destinatario"]:checked')?.value || 'Individual';
+            const motivosChecked = Array.from(document.querySelectorAll('input[name="motivos"]:checked')).map(cb => cb.value).join(', ');
+            formData.set('motivo', `${destinatario}: ${motivosChecked || 'Consulta general'}`);
 
             try {
-                // Enviamos los datos al script de Google
+                // Envío directo a tu Apps Script existente
                 await fetch(SCRIPT_URL, {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors' // Necesario para Google Apps Script
+                    mode: 'no-cors'
                 });
 
-                // Mostrar éxito
-                const fieldsId = type === 'patient' ? 'patient-fields' : 'psychologist-fields';
-                const successId = type === 'patient' ? 'patient-success' : 'psychologist-success';
+                // Disparar Evento Google Ads Conversion
+                trackEvent('conversion', 'patient_lead');
+                trackEvent('generate_lead', 'patient_lead');
 
-                document.getElementById(fieldsId).style.display = 'none';
-                document.getElementById(successId).classList.remove('hidden');
+                // Personalizar link de WhatsApp de éxito
+                const nombre = document.getElementById('wizard-nombre').value || '';
+                const waLink = document.getElementById('success-whatsapp-link');
+                if (waLink) {
+                    waLink.href = `https://wa.me/5491100000000?text=Hola%20TuPsic,%20soy%20${encodeURIComponent(nombre)}%20y%20acabo%20de%20completar%20mi%20b%C3%BAsqueda.`;
+                }
+
+                // Mostrar Éxito
+                form.style.display = 'none';
+                document.getElementById('wizard-success-state').classList.remove('hidden');
                 form.reset();
+
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error al enviar:', error);
                 alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
             } finally {
-                btn.disabled = false;
-                submitText.classList.remove('hidden');
-                loadingSpinner.classList.add('hidden');
+                submitBtn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnSpinner.classList.add('hidden');
+            }
+        }
+
+        // SUBMIT PSICÓLOGOS (Compatible 100% con tu Google Sheet 'especialistas')
+        async function submitPsychologistForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = document.getElementById('psychologist-submit-btn');
+            const btnText = document.getElementById('psychologist-btn-text');
+            const btnSpinner = document.getElementById('psychologist-btn-spinner');
+
+            submitBtn.disabled = true;
+            btnText.classList.add('hidden');
+            btnSpinner.classList.remove('hidden');
+
+            const formData = new FormData(form);
+            formData.append('sheetName', 'especialistas');
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                });
+
+                trackEvent('generate_lead', 'psychologist_signup');
+
+                form.style.display = 'none';
+                document.getElementById('psychologist-success-state').classList.remove('hidden');
+                form.reset();
+
+            } catch (error) {
+                console.error('Error al registrar profesional:', error);
+                alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+            } finally {
+                submitBtn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnSpinner.classList.add('hidden');
             }
         }
     </script>
